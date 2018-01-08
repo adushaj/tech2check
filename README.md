@@ -1,1 +1,5 @@
 # tech2check
+
+Our project model is a web-based rental service based off of the services provided by Oakland University’s Student Technology Center (STC). The STC rents out various technological equipment for students to use – however, it is difficult to monitor the status of these rentals and gather specific information about them with the current system.
+
+The goal is to create a professional, efficient, and practical database system. Employees will be able to use this database to keep track of technology/equipment rentals; this includes information on the condition of the equipment, duration of the loan, other necessary details, etc. Certain administrative rights can also be designated according to the position that the employee holds. In addition, the team is planning to incorporate a barcode scanner to scan items in and out of the database. The group will have a scanner prepared and have it programmed accordingly for the purposes of the project. Skills in web development, database management, and general technological practices will be required.
