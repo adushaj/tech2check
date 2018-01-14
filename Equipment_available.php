@@ -50,9 +50,6 @@
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
 </head>
-
-<!-- ======== @Region: body ======== -->
-
 <body class="page-elements">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
   <div id="background-wrapper" class="benches" data-stellar-background-ratio="0.8">
@@ -213,7 +210,198 @@
   </div>
 
   <!-- ======== @Region: #content ======== -->
- 
+  <div id="content">
+    <div class="container">
+            <div class="block">
+        <h3 class="block-title text-weight-strong text-uppercase">
+            Equipment Available
+          </h3>
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Laptops</a></li>
+          <li><a href="#tab2" data-toggle="tab">Tablets</a></li>
+          <li><a href="#tab3" data-toggle="tab">Cameras</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade in active" id="tab1">
+            <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Rental Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+          </tbody>
+        </table>
+          </div>
+          <div class="tab-pane fade" id="tab2">
+            <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Rental Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+          </tbody>
+        </table>
+          </div>
+          <div class="tab-pane fade" id="tab3">
+            <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Rental Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+            <tr>
+              <td>Dell</td>
+              <td>XPS</td>
+              <td>3 Days</td>
+            </tr>
+          </tbody>
+        </table>
+          </div>
+        </div>
+        <hr>
+         <hr>
+        <h4 class="block-title">
+           Other Equipment
+          </h4>
+        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="img/dell_xps.png" alt="Project 1 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Dell Laptop</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">Dell Laptop</a>
+                </h4>
+              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+            </div>
+          </div>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="img/dell_xps.png" alt="Project 2 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">MacBook Pro</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">MacBook Pro</a>
+                </h4>
+              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+            </div>
+          </div>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="img/dell_xps.png" alt="Project 3 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">DLSR Camera</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">DLSR Camera</a>
+                </h4>
+              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+            </div>
+          </div>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="img/dell_xps.png" alt="Project 4 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Go Pro</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">Go Pro</a>
+                </h4>
+              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+            </div>
+          </div>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="img/dell_xps.png" alt="Project 4 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">iPad</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">iPad</a>
+                </h4>
+              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        </div>
+      </div>
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
     <div class="container">
