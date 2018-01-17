@@ -9,12 +9,14 @@
         $street_line1 = mysqli_real_escape_string($connection, $_POST['streetaddress1']);
         $street_line2 = mysqli_real_escape_string($connection, $_POST['streetaddress2']);
         $city = mysqli_real_escape_string($connection, $_POST['city']);
-        $state = mysqli_real_escape_string($connection, $_POST['state']);
+        $state = strtoupper(mysqli_real_escape_string($connection, $_POST['state']));
         $zip = mysqli_real_escape_string($connection, $_POST['zip']);
         $phone_number = mysqli_real_escape_string($connection, $_POST['phonenumber']);
         $email_address = mysqli_real_escape_string($connection, $_POST['email']);
         $password = mysqli_real_escape_string($connection, $_POST['password']);
         $password_verify = mysqli_real_escape_string($connection, $_POST['passwordverify']);
+        $security_question = mysqli_real_escape_string($connection, $_POST['question']);
+        $security_answer = strtolower(mysqli_real_escape_string($connection, $_POST['answer']));
         
         $_SESSION['reg_username'] = $username;
         $_SESSION['reg_firstname'] = $first_name;
@@ -48,12 +50,17 @@
             header("location: ../register.php");
             exit;
         } else {
-            // Hash password
+            // Hash settings
             $options = [
                 'cost' => 11,
                 'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
             ];
+            
+            // Hash password
             $password = password_hash($password, PASSWORD_BCRYPT, $options);
+            
+            // Hash security answer
+            $security_answer = password_hash($security_answer, PASSWORD_BCRYPT, $options);
         }
     
         //pass empty input as null
@@ -73,8 +80,12 @@
         $result = mysql_query($input);
         if ($result) {
             //insert password
-            $sql = "INSERT INTO password VALUES ('$username_id', '$password')";
-            mysql_query($sql);
+            $sql_password = "INSERT INTO password VALUES ('$username_id', '$password')";
+            mysql_query($sql_password);
+            
+            //insert security question and answer
+            $sql_security = "INSERT INTO security_answers VALUES ('$username_id', '$security_question', '$security_answer')";
+            mysql_query($sql_security);
             
             unset($_SESSION['reg_username']);
             unset($_SESSION['reg_firstname']);
