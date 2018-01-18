@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="">
 
   <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="img/icons/favicon.png">
+  <link rel="shortcut icon" href="img/logo.png" type="image/png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
   <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
@@ -73,7 +73,7 @@
                   Contact Us
                 </h3>
               <address>
-                  <strong>Flexor Bootstrap Theme Inc</strong>
+                  <strong>Tech2Check</strong>
                   <abbr title="Address"><i class="fa fa-pushpin"></i></abbr>
                   Sunshine House, Sunville. SUN12 8LU.
                   <br>
@@ -81,7 +81,7 @@
                   019223 8092344
                   <br>
                   <abbr title="Email"><i class="fa fa-envelope-alt"></i></abbr>
-                  info@flexorinc.com
+                  info@tech2check.com
                 </address>
             </div>
             <div class="col-md-6">
@@ -112,100 +112,10 @@
         </div>
       </div>
       <!--Header & navbar-branding region-->
-      <div class="header">
-        <div class="header-inner container">
-          <div class="row">
-            <div class="col-md-8">
-              <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
-                <h1 class="hidden">
-                    <img src="img/logo.png" alt="Flexor Logo">
-                    Flexor
-                  </h1>
-              </a>
-              <div class="navbar-slogan">
-                Providing IT Services
-                <br>
-                Since 2018
-              </div>
-            </div>
-            <!--header rightside-->
-            <div class="col-md-4">
-              <!--user menu-->
-              <ul class="list-inline user-menu pull-right">
-                <li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a href="register.html" class="text-uppercase">Register</a></li>
-                <li class="hidden-xs"><i class="fa fa-sign-in text-primary"></i> <a href="login.html" class="text-uppercase">Login</a></li>
-                <li><a class="btn btn-primary btn-hh-trigger" role="button" data-toggle="collapse" data-target=".header-hidden">Open</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="navbar navbar-default">
-          <!--mobile collapse menu button-->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <!--social media icons-->
-          <div class="navbar-text social-media social-media-inline pull-right">
-            <!--@todo: replace with company social media details-->
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-google-plus"></i></a>
-          </div>
-          <!--everything within this div is collapsed on mobile-->
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav" id="main-menu">
-              <li class="icon-link">
-                <a href="index.html"><i class="fa fa-home"></i></a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<b class="caret"></b></a>
-                <!-- Dropdown Menu -->
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">Flexor Lite Version Pages</li>
-                  <li><a href="elements.html" tabindex="-1" class="menu-item">Elements</a></li>
-                  <li><a href="about.html" tabindex="-1" class="menu-item">About / Inner Page</a></li>
-                  <li><a href="login.html" tabindex="-1" class="menu-item">Login</a></li>
-                  <li><a href="register.html" tabindex="-1" class="menu-item">Sign-Up</a></li>
-                  <li class="dropdown-footer">Dropdown footer</li>
-                </ul>
-              </li>
-              <li><a href="#">Menu Link</a></li>
-              <li class="dropdown dropdown-mm">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mega Menu<b class="caret"></b></a>
-                <!-- Dropdown Menu -->
-                <ul class="dropdown-menu dropdown-menu-mm dropdown-menu-persist">
-                  <li class="row">
-                    <ul class="col-md-6">
-                      <li class="dropdown-header">Websites and Apps</li>
-                      <li><a href="#">Analysis and Planning</a></li>
-                      <li><a href="#">User Experience / Information Architecture</a></li>
-                      <li><a href="#">User Interface Design / UI Design</a></li>
-                      <li><a href="#">Code &amp; Development / Implementation &amp; Support</a></li>
-                    </ul>
-                    <ul class="col-md-6">
-                      <li class="dropdown-header">Enterprise solutions</li>
-                      <li><a href="#">Business Analysis</a></li>
-                      <li><a href="#">Custom UX Consulting</a></li>
-                      <li><a href="#">Quality Assurance</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-footer">
-                    <div class="row">
-                      <div class="col-md-7">Like the lite version? <strong>Get the extended version of Flexor.</strong></div>
-                      <div class="col-md-5">
-                        <a href="https://bootstrapmade.com" class="btn btn-more btn-lg pull-right"><i class="fa fa-cloud-download"></i> Get It Now</a>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!--/.navbar-collapse -->
-        </div>
-      </div>
+<?php
+include ("navbar.php");
+?>
+
     </div>
   </div>
 
@@ -220,6 +130,7 @@
           <li class="active"><a href="#tab1" data-toggle="tab">Laptops</a></li>
           <li><a href="#tab2" data-toggle="tab">Tablets</a></li>
           <li><a href="#tab3" data-toggle="tab">Cameras</a></li>
+          <li><a href="#tab4" data-toggle="tab">Other</a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade in active" id="tab1">
@@ -232,26 +143,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
+            <?php
+            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+            	  FROM model
+            	  JOIN make ON model.make_id = make.make_id
+            	  JOIN type ON model.type_id = type.type_id
+            	  JOIN rental_length ON type.rental_length_id = rental_length.rental_length_id
+            	  WHERE type.type_id = 1";
+            	  
+            	$Equipment = mysql_query($EquipmentList);
+            	
+            while($row = mysql_fetch_array($Equipment)){
+                echo "<tr>";
+                echo "<td>" . $row['make'] . "</td>";
+                echo "<td>" . $row['model'] . "</td>";
+                echo "<td>" . $row['rental_length'] . "</td>";
+                echo "</tr>";
+            }
+            ?>
           </tbody>
         </table>
           </div>
@@ -265,26 +174,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
+            <?php
+            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+            	  FROM model
+            	  JOIN make ON model.make_id = make.make_id
+            	  JOIN type ON model.type_id = type.type_id
+            	  JOIN rental_length ON type.rental_length_id = rental_length.rental_length_id
+            	  WHERE type.type_id = 2";
+            	  
+            	$Equipment = mysql_query($EquipmentList);
+            	
+            while($row = mysql_fetch_array($Equipment)){
+                echo "<tr>";
+                echo "<td>" . $row['make'] . "</td>";
+                echo "<td>" . $row['model'] . "</td>";
+                echo "<td>" . $row['rental_length'] . "</td>";
+                echo "</tr>";
+            }
+            ?>
           </tbody>
         </table>
           </div>
@@ -298,26 +205,55 @@
             </tr>
           </thead>
           <tbody>
+            <?php
+            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+            	  FROM model
+            	  JOIN make ON model.make_id = make.make_id
+            	  JOIN type ON model.type_id = type.type_id
+            	  JOIN rental_length ON type.rental_length_id = rental_length.rental_length_id
+            	  WHERE type.type_id = 3";
+            	  
+            	$Equipment = mysql_query($EquipmentList);
+            	
+            while($row = mysql_fetch_array($Equipment)){
+                echo "<tr>";
+                echo "<td>" . $row['make'] . "</td>";
+                echo "<td>" . $row['model'] . "</td>";
+                echo "<td>" . $row['rental_length'] . "</td>";
+                echo "</tr>";
+            }
+            ?>
+          </tbody>
+        </table>
+          </div>
+                    <div class="tab-pane fade" id="tab4">
+            <table class="table table-bordered">
+          <thead>
             <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Rental Length</th>
             </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
-            <tr>
-              <td>Dell</td>
-              <td>XPS</td>
-              <td>3 Days</td>
-            </tr>
+          </thead>
+          <tbody>
+            <?php
+            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+            	  FROM model
+            	  JOIN make ON model.make_id = make.make_id
+            	  JOIN type ON model.type_id = type.type_id
+            	  JOIN rental_length ON type.rental_length_id = rental_length.rental_length_id
+            	  WHERE type.type_id > 3 ";
+            	  
+            	$Equipment = mysql_query($EquipmentList);
+            	
+            while($row = mysql_fetch_array($Equipment)){
+                echo "<tr>";
+                echo "<td>" . $row['make'] . "</td>";
+                echo "<td>" . $row['model'] . "</td>";
+                echo "<td>" . $row['rental_length'] . "</td>";
+                echo "</tr>";
+            }
+            ?>
           </tbody>
         </table>
           </div>
@@ -468,7 +404,7 @@
       <div class="row subfooter">
         <!--@todo: replace with company copyright details-->
         <div class="col-md-7">
-          <p>Copyright © Flexor Theme</p>
+          <p>Copyright © Tech2Check</p>
           <div class="credits">
             <a href="https://bootstrapmade.com/">Free Bootstrap Templates</a> by BootstrapMade.com
           </div>
