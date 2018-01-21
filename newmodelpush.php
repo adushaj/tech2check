@@ -5,9 +5,6 @@
         $make = mysqli_real_escape_string($connection, $_POST['make']);
         $type = mysqli_real_escape_string($connection, $_POST['type']); 
         $newmodel = mysqli_real_escape_string($connection, $_POST['model']); 
-
-        $makeid = "SELECT make_id FROM make WHERE make = '$make'";
-        $typeid = "SELECT type_id FROM type WHERE type = '$type'";
         
         //Check for new model and ensure it does not already exist
         $sql_model = "SELECT model FROM model WHERE model = '$newmodel'";
@@ -17,7 +14,7 @@
             exit;
         } else {
             // Insert new model into table
-            $input = "INSERT INTO model (make_id, type_id, model) VALUES ('$makeid', '$typeid', '$newmodel')";
+            $input = "INSERT INTO model (make_id, type_id, model) VALUES ((SELECT make_id from make WHERE make ='$make'), (SELECT type_id FROM type where type = '$type'), '$newmodel')";
             $result = mysql_query($input);
         }
         if ($result){
