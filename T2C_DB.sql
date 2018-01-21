@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2018 at 12:04 AM
+-- Generation Time: Jan 21, 2018 at 01:42 PM
 -- Server version: 5.5.57-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.22
 
@@ -42,7 +42,14 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `email` varchar(25) NOT NULL,
   `account_disabled_indicator` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`employee_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`employee_id`, `employee_type_id`, `username_id`, `first_name`, `last_name`, `middle_initial`, `street_line_1`, `street_line_2`, `city`, `state`, `zip_code`, `phone_number`, `email`, `account_disabled_indicator`) VALUES
+(1, 3, 52, 'root', 'root', '', 'root', '', 'root', 'MI', 0, '0', 'root@tech2check.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -54,7 +61,16 @@ CREATE TABLE IF NOT EXISTS `employee_type` (
   `employee_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `employee_type` varchar(25) NOT NULL,
   PRIMARY KEY (`employee_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `employee_type`
+--
+
+INSERT INTO `employee_type` (`employee_type_id`, `employee_type`) VALUES
+(1, 'Front Desk'),
+(2, 'Technician'),
+(3, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -66,7 +82,8 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `serial_number` varchar(25) NOT NULL,
   `model_id` int(11) NOT NULL,
   `status_id` int(11) NOT NULL,
-  PRIMARY KEY (`serial_number`)
+  PRIMARY KEY (`serial_number`),
+  UNIQUE KEY `serial_number` (`serial_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -183,7 +200,9 @@ CREATE TABLE IF NOT EXISTS `password` (
 --
 
 INSERT INTO `password` (`username_id`, `password`) VALUES
-(50, '$2y$11$dMY3MRZ9O8iO8nNk2BMjHuPk5fluB3o0CxEiQfrXsIBGdTOWDysHq');
+(50, '$2y$11$dMY3MRZ9O8iO8nNk2BMjHuPk5fluB3o0CxEiQfrXsIBGdTOWDysHq'),
+(51, '$2y$11$pIh00BCYQ6q20CW7YQtsMOTBN9I2VAZPHfRm0yknuJyg7Qs2Hn.K2'),
+(52, '$2y$11$3bUTsgKmi.jX34paum24SeLKd5n3EFfzH1d/0TXYPDBGePSm8W/TO');
 
 -- --------------------------------------------------------
 
@@ -258,7 +277,9 @@ CREATE TABLE IF NOT EXISTS `security_answers` (
 --
 
 INSERT INTO `security_answers` (`username_id`, `question_id`, `answer`) VALUES
-(50, 1, '$2y$11$dMY3MRZ9O8iO8nNk2BMjHuLViGM0TTftHj4JiCp6ebvN5EgLBKOE.');
+(50, 1, '$2y$11$dMY3MRZ9O8iO8nNk2BMjHuLViGM0TTftHj4JiCp6ebvN5EgLBKOE.'),
+(51, 5, '$2y$11$pIh00BCYQ6q20CW7YQtsMO6MVJk7V9DOWLYFoKRSIXmIiobOgsnyW'),
+(52, 5, '$2y$11$3bUTsgKmi.jX34paum24SeLKd5n3EFfzH1d/0TXYPDBGePSm8W/TO');
 
 -- --------------------------------------------------------
 
@@ -306,14 +327,15 @@ CREATE TABLE IF NOT EXISTS `student` (
   `locked_indicator` tinyint(1) DEFAULT NULL,
   `notes` varchar(75) DEFAULT NULL,
   PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`student_id`, `username_id`, `first_name`, `last_name`, `middle_initial`, `street_line_1`, `street_line_2`, `city`, `state`, `zip_code`, `phone_number`, `email`, `locked_indicator`, `notes`) VALUES
-(18, 50, 'lily', 'schimmel', 'k', '352 john m.', '', 'Clawson', 'MI', 48017, '2489183854', 'lkschimmel@oakland.edu', NULL, NULL);
+(18, 50, 'lily', 'schimmel', 'k', '352 john m.', '', 'Clawson', 'MI', 48017, '2489183854', 'lkschimmel@oakland.edu', NULL, NULL),
+(19, 51, 'Taylor', 'Winowiecki', 'R', '256 S Webik', '', 'Clawson', 'MI', 48017, '2488070292', 'trwinowiecki@oakland.edu', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -353,14 +375,16 @@ CREATE TABLE IF NOT EXISTS `usernames` (
   `username` varchar(25) NOT NULL,
   PRIMARY KEY (`username_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `usernames`
 --
 
 INSERT INTO `usernames` (`username_id`, `username`) VALUES
-(50, 'lks');
+(50, 'lks'),
+(52, 'root'),
+(51, 'trwinowiecki');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
