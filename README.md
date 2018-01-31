@@ -1,5 +1,40 @@
-# tech2check
+Tech2Check
+Our project model is a web-based rental service based off of the services provided by Oakland University’s Student Technology Center (STC).The STC rents out various technological equipment for students to use – however, it is difficult to monitor the status of these rentals and gather specific information about them with the current system.
 
-Our project model is a web-based rental service based off of the services provided by Oakland University’s Student Technology Center (STC). The STC rents out various technological equipment for students to use – however, it is difficult to monitor the status of these rentals and gather specific information about them with the current system.
+Color palette for our site: FUSCHIA #A239CA and STARK #E7DFDD
 
-The goal is to create a professional, efficient, and practical database system. Employees will be able to use this database to keep track of technology/equipment rentals; this includes information on the condition of the equipment, duration of the loan, other necessary details, etc. Certain administrative rights can also be designated according to the position that the employee holds. In addition, the team is planning to incorporate a barcode scanner to scan items in and out of the database. The group will have a scanner prepared and have it programmed accordingly for the purposes of the project. Skills in web development, database management, and general technological practices will be required.
+Please update the readme as you make changes
+
+INDEX
+    A. How to run site/phpmyadmin
+    B. Tools
+    C. NOTES
+    
+A. How to run site/phpmyadmin
+    1. Open index.php
+    2. Click run
+    3. Open Link 
+    
+    
+    PHP: https://csi-4999-woodle.c9users.io/phpmyadmin
+    USERNAME: woodle
+    There is no password
+    
+B. Tools
+    1.Slack
+        a. csi-4999.slack.com
+    2.Trello
+        a. https://trello.com/b/NOg08HxO
+    3.Git
+        a. https://github.com/adushaj/tech2check
+
+C. NOTES
+    1. Employee type codes:
+        a. 1 - Front Desk
+        b. 2 - Technician
+        c. 3 - Admin
+    2. root account:
+        a. username: root
+        b. email: root@tech2check.com
+        c. password: root
+    
