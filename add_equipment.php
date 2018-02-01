@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>About - Tech2Check</title>
+  <title>Add Equipment - Tech2Check</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -65,14 +65,20 @@
       						<select class="form-control" type="text" id="model" name="model" required>
       						  <option value="" selected disabled>Please select Model</option>
       							<?php
-                      	$ModelList = "SELECT model
-                      	  FROM model
-                      	  ORDER BY model";
+                      // 	$ModelList =  "SELECT model
+                      // 	                FROM model
+                      // 	                ORDER BY model";
                       	  
-                      	$Model = mysql_query($ModelList);
-                      	
+                      // 	    //"SELECT *
+                      // 	    //FROM model JOIN make
+                      // 	    //ON make_id";
+                      // 	    //ORDER BY make, model";
+                      	  
+                      $sql = "SELECT * FROM model a LEFT JOIN make b ON a.make_id = b.make_id ORDER BY make, model";
+                      $Model = mysql_query($sql);
+                      
                       while($row = mysql_fetch_array($Model)){
-                          echo "<option>" . $row['model'] . "</option>";
+                          echo "<option>" . $row['make'] . " " . $row['model'] . "</option>";
                       }
                       ?>
       						</select>

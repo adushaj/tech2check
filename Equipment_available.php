@@ -263,83 +263,40 @@ include ("navbar.php");
           </div>
         </div>
         <hr>
-         <hr>
+        <hr>
         <h4 class="block-title">
            Other Equipment
           </h4>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 1 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Dell Laptop</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Dell Laptop</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 2 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">MacBook Pro</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">MacBook Pro</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 3 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">DLSR Camera</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">DLSR Camera</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 4 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Go Pro</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Go Pro</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 4 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">iPad</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">iPad</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
+          <?PHP
+          
+          $ModelList = "SELECT make, model, file_path FROM model JOIN make on model.make_id = make.make_id ORDER BY Rand() LIMIT 10";
+          $Models = mysql_query($ModelList);
+          
+          while($row = mysql_fetch_array($Models)){
+            echo "<div class='item'>";
+            echo "<a href='' class='overlay-wrapper'>";
+            echo "<img src='" . $row['file_path'] ."' alt='Project 1 image' class='img-responsive underlay'>";
+            echo "<span class='overlay'>";
+            echo "<span class='overlay-content'> <span class='h4'>" . $row['make'] . " " . $row['model'] . "</span>" . "</span>";
+            echo "</span>";
+            echo "</a>";
+            echo "<div class='item-details bg-noise'>";
+            echo "<h4 class='item-title'>";
+            echo "<a href=''>" . $row['make'] . " " . $row['model'] . "</a>";
+            echo "</h4>";
+            echo "<a href='' class='btn btn-more'><i class='fa fa-plus'></i>Read more</a>";
+            echo "</div>";
+            echo "</div>";
+          }
+          
+          ?>
+          
+          
         </div>
-        <hr>
+        
+        <!-- End of Test Area -->
+        
         </div>
       </div>
   <!-- ======== @Region: #footer ======== -->
@@ -356,7 +313,7 @@ include ("navbar.php");
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
+  <!-- Template Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
 
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
