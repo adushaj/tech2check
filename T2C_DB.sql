@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2018 at 01:42 PM
+-- Generation Time: Jan 24, 2018 at 11:44 PM
 -- Server version: 5.5.57-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.22
 
@@ -93,10 +93,12 @@ CREATE TABLE IF NOT EXISTS `equipment` (
 INSERT INTO `equipment` (`serial_number`, `model_id`, `status_id`) VALUES
 ('5t9QMkUB', 2, 1),
 ('7y2M4twv', 6, 1),
+('A93h0ckq9dss', 5, 1),
 ('C02TW0W9HV2F', 3, 1),
 ('dcp2FAUj', 7, 1),
 ('FDfABgwB', 3, 1),
 ('fMmsPUcC', 6, 1),
+('JMZS747', 12, 1),
 ('Jncw7Mhv', 5, 1),
 ('jsSD9AMH', 5, 1),
 ('NRQdqoyF', 1, 1),
@@ -134,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `make` (
   `make_id` int(11) NOT NULL AUTO_INCREMENT,
   `make` varchar(25) NOT NULL,
   PRIMARY KEY (`make_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `make`
@@ -153,7 +155,8 @@ INSERT INTO `make` (`make_id`, `make`) VALUES
 (10, 'Sony'),
 (11, 'GoPro'),
 (12, 'Kodak'),
-(13, 'Microsoft');
+(13, 'Microsoft'),
+(16, 'Lenovo');
 
 -- --------------------------------------------------------
 
@@ -167,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `model` (
   `type_id` int(11) NOT NULL,
   `model` varchar(25) NOT NULL,
   PRIMARY KEY (`model_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `model`
@@ -181,7 +184,8 @@ INSERT INTO `model` (`model_id`, `make_id`, `type_id`, `model`) VALUES
 (5, 2, 2, 'iPad Pro'),
 (6, 2, 2, 'iPad'),
 (7, 13, 8, 'Xbox One S'),
-(8, 10, 8, 'Playstation 4 Pro');
+(8, 10, 8, 'Playstation 4 Pro'),
+(12, 8, 3, 'Rebal T6');
 
 -- --------------------------------------------------------
 
@@ -252,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `rental_record` (
 
 CREATE TABLE IF NOT EXISTS `reservation_list` (
   `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
-  `equipment_spec_id` int(11) NOT NULL,
+  `model_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `date_reserved` date NOT NULL,
   `fulfilled_indicator` tinyint(1) NOT NULL,

@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>About - Tech2Check</title>
+  <title>Add Equipment - Tech2Check</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -58,49 +58,36 @@
     <div id="myTabContent" class="tab-content">
       <!-- START OF Add New Equipment -->
       <div class="tab-pane active in" id="newequipmenttab">
-        <form action="newequipmentpush.php" method="post">
-            <div class="form-group row">
-      				<label class="col-xs-2 col-form-label">Make</label>
-      					<div class="col-xs-10 selectContainer">
-      						<select class="form-control" type="text" id="make" name="make" required>
-      							<option value="" selected disabled>Please select Make</option>
-                		<?php
-                      	$MakeList = "SELECT make
-                      	  FROM make
-                      	  ORDER BY make";
-                      	  
-                      	$Make = mysql_query($MakeList);
-                      	
-                      while($row = mysql_fetch_array($Make)){
-                          echo "<option>" . $row['make'] . "</option>";
-                      }
-                      ?>
-      						</select>
-      					</div>
-      			</div>
+        <form action="push/newequipmentpush.php" method="post">
             <div class="form-group row">
       				<label class="col-xs-2 col-form-label">Model</label>
       					<div class="col-xs-10 selectContainer">
       						<select class="form-control" type="text" id="model" name="model" required>
       						  <option value="" selected disabled>Please select Model</option>
       							<?php
-                      	$ModelList = "SELECT model
-                      	  FROM model
-                      	  ORDER BY model";
+                      // 	$ModelList =  "SELECT model
+                      // 	                FROM model
+                      // 	                ORDER BY model";
                       	  
-                      	$Model = mysql_query($ModelList);
-                      	
+                      // 	    //"SELECT *
+                      // 	    //FROM model JOIN make
+                      // 	    //ON make_id";
+                      // 	    //ORDER BY make, model";
+                      	  
+                      $sql = "SELECT * FROM model a LEFT JOIN make b ON a.make_id = b.make_id ORDER BY make, model";
+                      $Model = mysql_query($sql);
+                      
                       while($row = mysql_fetch_array($Model)){
-                          echo "<option>" . $row['model'] . "</option>";
+                          echo "<option>" . $row['make'] . " " . $row['model'] . "</option>";
                       }
                       ?>
       						</select>
       					</div>
       			</div>
             <div class="form-group row">
-              <label for="model" class="col-xs-2 col-form-label">Service Tag</label>
+              <label for="model" class="col-xs-2 col-form-label">Serial Number</label>
                 <div class="col-xs-10">
-                <input class="form-control" type="text" value="" id="servicetag" name="servicetag" placeholder="Please enter the service tag" required>
+                <input class="form-control" type="text" value="" id="serialnumber" name="serialnumber" placeholder="Please enter the serial number" required>
               </div>
             </div>
             <input type = "submit" value="SUBMIT" class ="btn btn-default"/><br />
@@ -109,7 +96,7 @@
       <!-- END OF Add New Equipment -->
       <!-- START OF Add New Make -->
       <div class="tab-pane fade" id="newmaketab">
-    	<form id="tab2" action="newmakepush.php" method="post">
+    	<form id="tab2" action="push/newmakepush.php" method="post">
         	<div class="form-group row">
               <label for="model" class="col-xs-2 col-form-label">Make</label>
                 <div class="col-xs-10">
@@ -122,8 +109,8 @@
       <!-- END OF Add New Make -->
       <!-- START OF Add New Model -->
       <div class="tab-pane fade" id="newmodeltab">
-    	<form id="tab3" action="newmodelpush.php" method="post">
-        	            <div class="form-group row">
+    	<form id="tab3" action="push/newmodelpush.php" method="post">
+        	   <div class="form-group row">
       				<label class="col-xs-2 col-form-label">Make</label>
       					<div class="col-xs-10 selectContainer">
       						<select class="form-control" type="text" id="make" name="make" required>

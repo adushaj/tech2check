@@ -120,31 +120,31 @@ include ("navbar.php");
   </div>
 
   <!-- ======== @Region: #content ======== -->
-  <div id="content">
-    <div class="container">
-            <div class="block">
-        <h3 class="block-title text-weight-strong text-uppercase">
-            Equipment Available
-          </h3>
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">Laptops</a></li>
-          <li><a href="#tab2" data-toggle="tab">Tablets</a></li>
-          <li><a href="#tab3" data-toggle="tab">Cameras</a></li>
-          <li><a href="#tab4" data-toggle="tab">Other</a></li>
-        </ul>
+  
+  <!-- START OF TEST AREA -->
+  <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+
+          <h1 class="my-4">Available Equipment</h1>
+          <div class="list-group">
+            <a href="#tab1" class="list-group-item" data-toggle="tab">Laptops</a>
+            <a href="#tab2" class="list-group-item" data-toggle="tab">Tablets</a>
+            <a href="#tab3" class="list-group-item" data-toggle="tab">Cameras</a>
+            <a href="#tab4" class="list-group-item" data-toggle="tab">Other</a>
+          </div>
+
+        </div>
+        <!-- /.col-lg-3 -->
         <div class="tab-content">
-          <div class="tab-pane fade in active" id="tab1">
-            <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Make</th>
-              <th>Model</th>
-              <th>Rental Length</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+        <div class="col-lg-9 tab-pane fade in active" id="tab1">
+          <br>
+          <br>
+        <div class="row">
+        <?PHP
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -155,28 +155,32 @@ include ("navbar.php");
             	$Equipment = mysql_query($EquipmentList);
             	
             while($row = mysql_fetch_array($Equipment)){
-                echo "<tr>";
-                echo "<td>" . $row['make'] . "</td>";
-                echo "<td>" . $row['model'] . "</td>";
-                echo "<td>" . $row['rental_length'] . "</td>";
-                echo "</tr>";
+                echo"<div class='col-lg-4 col-md-6 mb-4'>";
+                echo"<div class='card h-100'>";
+                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<div class='card-body'>";
+                echo"<h4 class='card-title'>";
+                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"</h4>";
+                echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
+                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"</div>";
+                echo"<div class='card-footer'>";
+                echo"</div>";
+                echo"</div>";
+                echo"</div>";
             }
-            ?>
-          </tbody>
-        </table>
+        ?>
           </div>
-          <div class="tab-pane fade" id="tab2">
-            <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Make</th>
-              <th>Model</th>
-              <th>Rental Length</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+          <!-- /.row -->
+        </div>
+        <!-- /.col-lg-9 -->
+        <div class="col-lg-9 tab-pane fade" id="tab2">
+          <br>
+          <br>
+        <div class="row">
+        <?PHP
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -187,28 +191,31 @@ include ("navbar.php");
             	$Equipment = mysql_query($EquipmentList);
             	
             while($row = mysql_fetch_array($Equipment)){
-                echo "<tr>";
-                echo "<td>" . $row['make'] . "</td>";
-                echo "<td>" . $row['model'] . "</td>";
-                echo "<td>" . $row['rental_length'] . "</td>";
-                echo "</tr>";
+                echo"<div class='col-lg-4 col-md-6 mb-4'>";
+                echo"<div class='card h-100'>";
+                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<div class='card-body'>";
+                echo"<h4 class='card-title'>";
+                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"</h4>";
+                echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
+                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"</div>";
+                echo"<div class='card-footer'>";
+                echo"</div>";
+                echo"</div>";
+                echo"</div>";
             }
-            ?>
-          </tbody>
-        </table>
+        ?>
           </div>
-          <div class="tab-pane fade" id="tab3">
-            <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Make</th>
-              <th>Model</th>
-              <th>Rental Length</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+          <!-- /.row -->
+        </div>
+                <div class="col-lg-9 tab-pane fade" id="tab3">
+                  <br>
+                  <br>
+                <div class="row">
+        <?PHP
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -219,28 +226,31 @@ include ("navbar.php");
             	$Equipment = mysql_query($EquipmentList);
             	
             while($row = mysql_fetch_array($Equipment)){
-                echo "<tr>";
-                echo "<td>" . $row['make'] . "</td>";
-                echo "<td>" . $row['model'] . "</td>";
-                echo "<td>" . $row['rental_length'] . "</td>";
-                echo "</tr>";
+                echo"<div class='col-lg-4 col-md-6 mb-4'>";
+                echo"<div class='card h-100'>";
+                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<div class='card-body'>";
+                echo"<h4 class='card-title'>";
+                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"</h4>";
+                echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
+                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"</div>";
+                echo"<div class='card-footer'>";
+                echo"</div>";
+                echo"</div>";
+                echo"</div>";
             }
-            ?>
-          </tbody>
-        </table>
+        ?>
           </div>
-                    <div class="tab-pane fade" id="tab4">
-            <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Make</th>
-              <th>Model</th>
-              <th>Rental Length</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            	$EquipmentList = "SELECT make.make, model.model, rental_length.rental_length
+          <!-- /.row -->
+        </div>
+                <div class="col-lg-9 tab-pane fade" id="tab4">
+                  <br>
+                  <br>
+                <div class="row">
+        <?PHP
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -251,95 +261,69 @@ include ("navbar.php");
             	$Equipment = mysql_query($EquipmentList);
             	
             while($row = mysql_fetch_array($Equipment)){
-                echo "<tr>";
-                echo "<td>" . $row['make'] . "</td>";
-                echo "<td>" . $row['model'] . "</td>";
-                echo "<td>" . $row['rental_length'] . "</td>";
-                echo "</tr>";
+                echo"<div class='col-lg-4 col-md-6 mb-4'>";
+                echo"<div class='card h-100'>";
+                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<div class='card-body'>";
+                echo"<h4 class='card-title'>";
+                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"</h4>";
+                echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
+                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"</div>";
+                echo"<div class='card-footer'>";
+                echo"</div>";
+                echo"</div>";
+                echo"</div>";
             }
-            ?>
-          </tbody>
-        </table>
+        ?>
           </div>
+          <!-- /.row -->
         </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+  <!-- END OF TEST AREA -->
+  
+
+    <div class="container">
+            <div class="block">
         <hr>
-         <hr>
+        <hr>
         <h4 class="block-title">
            Other Equipment
           </h4>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 1 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Dell Laptop</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Dell Laptop</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 2 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">MacBook Pro</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">MacBook Pro</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 3 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">DLSR Camera</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">DLSR Camera</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 4 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Go Pro</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Go Pro</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/dell_xps.png" alt="Project 4 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">iPad</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">iPad</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
+          <?PHP
+          
+          $ModelList = "SELECT make, model, file_path FROM model JOIN make on model.make_id = make.make_id ORDER BY Rand() LIMIT 10";
+          $Models = mysql_query($ModelList);
+          
+          while($row = mysql_fetch_array($Models)){
+            echo "<div class='item'>";
+            echo "<a href='' class='overlay-wrapper'>";
+            echo "<img src='" . $row['file_path'] ."' alt='Project 1 image' class='img-responsive underlay'>";
+            echo "<span class='overlay'>";
+            echo "<span class='overlay-content'> <span class='h4'>" . $row['make'] . " " . $row['model'] . "</span>" . "</span>";
+            echo "</span>";
+            echo "</a>";
+            echo "<div class='item-details bg-noise'>";
+            echo "<h4 class='item-title'>";
+            echo "<a href=''>" . $row['make'] . " " . $row['model'] . "</a>";
+            echo "</h4>";
+            echo "<a href='' class='btn btn-more'><i class='fa fa-plus'></i>Read more</a>";
+            echo "</div>";
+            echo "</div>";
+          }
+          
+          ?>
+          
+          
         </div>
-        <hr>
+        
+        
         </div>
       </div>
   <!-- ======== @Region: #footer ======== -->
@@ -356,7 +340,7 @@ include ("navbar.php");
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
+  <!-- Template Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
 
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
