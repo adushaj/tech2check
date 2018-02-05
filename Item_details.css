@@ -1,0 +1,25 @@
+.container-fluid{
+    margin: 20px 5px 20px px;
+}
+#Equipment-Image {  
+    
+}
+#Equipment-Description {
+  
+}
+#equipment-checkout {
+    padding:5px;
+    border-radius: 25px;
+    background-color: #E6E6FA;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#equipment-checkout .btn{
+    background: #FFD700;
+    color: black;
+    border-radius: 12px;
+    
+}
+h3 {
+    font-size: 58px;
+    color: blue;
+}
