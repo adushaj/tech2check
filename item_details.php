@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>About - Tech2Check</title>
+  <title>Item Details - Tech2Check</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -33,7 +33,7 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
   <!-- Override CSS sheet -->
-  <link href="lib/bootstrap/css/Item_details.css" rel="stylesheet">
+  <link href="css/Item_details.css" rel="stylesheet">
 </head>
 
 <!-- ======== @Region: body ======== -->
@@ -46,11 +46,15 @@
   </div>
 
   <!-- ======== @Region: #content ======== -->
-  <div class="container-fluid">
+  <div class="container">
+    <div class="block">
+    <p id="res_error" style=<?php echo isset($_SESSION['res_error']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['res_error']; unset($_SESSION['res_error']); ?></p>
+    <p id="res_success" style=<?php echo isset($_SESSION['res_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['res_success']; unset($_SESSION['res_success']); ?></p>
     <div class="row">
       <div class="col-xs-12 col-md-4 col-lg-4">
         <?php
         $themodel = $_GET["model"];
+
         $sql = "Select file_path from model where model_id = $themodel";
         $result = mysql_query($sql);
         $pic = mysql_fetch_array($result);
@@ -59,38 +63,97 @@
       </div>
       <div class="col-xs-12 col-md-5 col-lg-5">
         <?php
-        $description = "Select description from model where model_id = $themodel";
-        $result = mysql_query($description);
-        $data = mysql_fetch_array($result);
-        echo $data['description'];
+        $makeList = "SELECT * FROM model JOIN make on model.make_id = make.make_id where model.model_id = $themodel";
+        $makeResult = mysql_query($makeList);
+        $sql = mysql_fetch_array($makeResult);
+        echo "<h2>" . $sql['make'] . " " . $sql['model'] . "<br>" . "</h2>";
+        echo $sql['description'];
         ?>
-      </div>
+      </div> 
       <div class="col-xs-12 col-md-3 col-lg-3">
+        <form action="push/reservepush.php" method="get">
         <div id="equipment-checkout">
           <?php
-            $count = "Select * from equipment where model_id = $themodel";
-            $result = mysql_query($count);
-            echo "<h4> Count: " .mysql_num_rows($result). "</h4>";
+            $ecount = "Select serial_number from equipment where model_id = $themodel";
+            $eresult = mysql_query($ecount);
+            
+            $rcount = "SELECT reservation_id FROM reservation_list WHERE model_id = $themodel AND fulfilled_indicator = 0";
+            $rresult = mysql_query($rcount);
+            
+            $result = mysql_num_rows($eresult) - mysql_num_rows($rresult);
+            
+            echo "<h4> Count: " . $result . "</h4>";
           
-            $avail = "select condition from equipment_status
+            $avail = "select * from equipment_status
             join equipment on equipment_status.status_id = equipment.status_id
             where model_id = $themodel";
             $result = mysql_query($avail);
             $data = mysql_fetch_array($result);
-            echo $data['condition'];
+            echo "<h4> Status: " .$data['condition'] . "</h4>";
           ?>
-          <a class="btn" href="#">
-          <i class="fa fa-shopping-cart fa-lg"></i> Put item on hold</a>
           
+          <input type="hidden" id="model" name="model" value="<?php echo $themodel; ?>">
+          <button type = "submit" value="Reserve" class ="btn btn-more"><i class="fa fa-shopping-cart fa-lg"></i>Reserve</button>
         </div>
       </div>
+      </form>
     </div>
   </div>
-  
-  
+  </div>
+        <div class="container">
+            <div class="block">
+        <hr>
+        <hr>
+        <h4 class="block-title">
+           Related Items
+          </h4>
+        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+          <?PHP
+          $ModelID = mysql_real_escape_string($_GET['model']);
+          $ModelList = "SELECT * 
+                        FROM model JOIN type 
+                        ON model.type_id = type.type_id 
+                        where model.model_id = '$ModelID' 
+                        ORDER BY Rand() LIMIT 10";
+          $Models = mysql_query($ModelList);
+          $TypeID = mysql_fetch_array($Models)['type_id'];
+          
+          $TypeIDFind = "SELECT *
+                         FROM model
+                         WHERE type_id = '$TypeID'";
+          $TypeIDList = mysql_query($TypeIDFind);
+        
+          
+          while($row = mysql_fetch_array($TypeIDList)){
+            echo "<div class='item'>";
+            echo "<a href='item_details.php?model=" . $row['model_id']."' class='overlay-wrapper'>";
+            echo "<img src='" . $row['file_path'] ."' alt='Project 1 image' class='img-responsive underlay'>";
+            echo "<span class='overlay'>";
+            echo "<span class='overlay-content'> <span class='h4'>" . $row['make'] . " " . $row['model'] . "</span>" . "</span>";
+            echo "</span>";
+            echo "</a>";
+            echo "<div class='item-details bg-noise'>";
+            echo "<h4 class='item-title'>";
+            echo "<a href='item_details.php?model=" . $row['model_id']."'>" . $row['make'] . " " . $row['model'] . "</a>";
+            echo "</h4>";
+            echo "<a href='item_details.php?model=" . $row['model_id']."' class='btn btn-more'><i class='fa fa-plus'></i>Read more</a>";
+            echo "</div>";
+            echo "</div>";
+          }
+          
+          ?>
+          
+          
+        </div>
+        
+        
+        </div>
+      </div>
 
   <!-- ======== @Region: #footer ======== -->
-
+  <?php
+    include("footer.php");
+  ?>
 
   <!-- Required JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -101,9 +164,9 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
   <script src="js/custom.js"></script>
-
+  <script src="/Project/js/freelancer.min.js"></script>
+  <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
   <script src="js/color-switcher.js"></script>
 
