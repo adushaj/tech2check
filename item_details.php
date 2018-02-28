@@ -48,11 +48,12 @@
   <!-- ======== @Region: #content ======== -->
   <div class="container">
     <div class="block">
+    <p id="res_error" style=<?php echo isset($_SESSION['res_error']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['res_error']; unset($_SESSION['res_error']); ?></p>
+    <p id="res_success" style=<?php echo isset($_SESSION['res_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['res_success']; unset($_SESSION['res_success']); ?></p>
     <div class="row">
       <div class="col-xs-12 col-md-4 col-lg-4">
         <?php
-        $_SESSION['model'] = $_GET["model"];
-        $themodel = $_SESSION['model'];
+        $themodel = $_GET["model"];
 
         $sql = "Select file_path from model where model_id = $themodel";
         $result = mysql_query($sql);
@@ -73,9 +74,15 @@
         <form action="push/reservepush.php" method="get">
         <div id="equipment-checkout">
           <?php
-            $count = "Select * from equipment where model_id = $themodel";
-            $result = mysql_query($count);
-            echo "<h4> Count: " . mysql_num_rows($result) . "</h4>";
+            $ecount = "Select serial_number from equipment where model_id = $themodel";
+            $eresult = mysql_query($ecount);
+            
+            $rcount = "SELECT reservation_id FROM reservation_list WHERE model_id = $themodel AND fulfilled_indicator = 0";
+            $rresult = mysql_query($rcount);
+            
+            $result = mysql_num_rows($eresult) - mysql_num_rows($rresult);
+            
+            echo "<h4> Count: " . $result . "</h4>";
           
             $avail = "select * from equipment_status
             join equipment on equipment_status.status_id = equipment.status_id
@@ -85,6 +92,7 @@
             echo "<h4> Status: " .$data['condition'] . "</h4>";
           ?>
           
+          <input type="hidden" id="model" name="model" value="<?php echo $themodel; ?>">
           <button type = "submit" value="Reserve" class ="btn btn-more"><i class="fa fa-shopping-cart fa-lg"></i>Reserve</button>
         </div>
       </div>
