@@ -64,26 +64,35 @@
   <!-- ======== @Region: #content ======== -->
   <div id="content">
     <div class="container">
+      <div class="row">
+          <div class="col-xs-12">
+              <h2 class="page-header">
+                  <center>
+                      User Configuration
+                  </center>
+              </h2>
+          </div>
+      </div>
       <div class="well">
         <div class="row">
           <div class="col-md-3">
             <p id="searcherror" style=<?php echo isset($_SESSION['searcherror']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['searcherror']; unset($_SESSION['searcherror']); ?></p>
             <p id="updatesuccess" style=<?php echo isset($_SESSION['updatesuccess']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['updatesuccess']; unset($_SESSION['updatesuccess']); ?></p>
-            <form name="searchForm" action="push/usersearchpush.php" method="POST" autocomplete="off">
-              <!--<div class="form-group" id="rads">-->
-              <!--    <label class="radio-inline" for="radio_both">-->
-              <!--      <input id="radio_both" name="typeRads" type="radio" onClick="check('radio_both');">-->
-              <!--      Both-->
-              <!--    </label>-->
-              <!--    <label class="radio-inline" for="radio_employee">-->
-              <!--      <input id="radio_employee" name="typeRads" type="radio" onClick="check('radio_employee');">-->
-              <!--      Employees-->
-              <!--    </label>-->
-              <!--    <label class="radio-inline" for="radio_student">-->
-              <!--      <input id="radio_student" name="typeRads" type="radio" onClick="check('radio_student');">-->
-              <!--      Students-->
-              <!--    </label>-->
-              <!--</div>-->
+            <form name="searchForm" action="push/configure_userpush.php" method="POST" autocomplete="off">
+              <div class="form-group" id="rads">
+                  <label class="radio-inline" for="radio_both">
+                    <input id="radio_both" name="typeRads" type="radio" onClick="check('radio_both');">
+                    Both
+                  </label>
+                  <label class="radio-inline" for="radio_employee">
+                    <input id="radio_employee" name="typeRads" type="radio" onClick="check('radio_employee');">
+                    Employees
+                  </label>
+                  <label class="radio-inline" for="radio_student">
+                    <input id="radio_student" name="typeRads" type="radio" onClick="check('radio_student');">
+                    Students
+                  </label>
+              </div>
               <div class="form-group">
                 <input class="form-control" id="dlist" name="dlist" list="list_both" name="user" placeholder="Enter username">
                 
@@ -147,7 +156,7 @@
             <div id="user_data" style=<?php echo isset($_SESSION['search_id']) ? "\"display:block;\"" : "\"display:none;\"" ?>>
               <div class="row">
                 <div class="col-xs-11">
-                  <form name="userForm" id="userForm" action="push/usersearchpush.php" method="POST">
+                  <form name="userForm" id="userForm" action="push/configure_userpush.php" method="POST">
                     <div class="form-group">
                       <label for="username">Username</label> 
                       <input class="form-control" type="text" id="username" name="username" maxlength="25" disabled required value=<?php echo "\"" . mysql_fetch_array(mysql_query("SELECT * FROM usernames WHERE username_id = '{$_SESSION['search_id']}'"))['username'] . "\""; ?>></input>
@@ -276,6 +285,8 @@
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="js/custom.js"></script>
+  <script src="/Project/js/freelancer.min.js"></script>
+  <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>
 
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
   <script src="js/color-switcher.js"></script>

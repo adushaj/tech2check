@@ -7,21 +7,18 @@ $( document ).ready(function(){
 $("#radio_both").change(function() {
     if ($("#radio_both").is(':checked')) {
         $('#dlist').attr("list", "list_both");
-        $('#dlist').load(document.URL +  ' #dlist');
     }
 });
 
 $("#radio_employee").change(function() {
     if ($("#radio_employee").is(':checked')) {
         $('#dlist').attr("list", "list_employee");
-        $('#dlist').load(document.URL +  ' #dlist');
     }
 });
 
 $("#radio_student").change(function() {
     if ($("#radio_student").is(':checked')) {
         $('#dlist').attr("list", "list_student");
-        $('#dlist').load(document.URL +  ' #dlist');
     }
 });
 

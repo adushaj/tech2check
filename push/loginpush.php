@@ -8,7 +8,7 @@
     
     if (filter_var($myloginkey, FILTER_VALIDATE_EMAIL)) {
       // Check for email
-      $sql = "SELECT * FROM employee WHERE email = '$myloginkey' UNION SELECT * FROM student WHERE email = '$myloginkey'";
+      $sql = "SELECT username_id FROM employee WHERE email = '$myloginkey' UNION SELECT username_id FROM student WHERE email = '$myloginkey'";
       $result = mysql_query($sql);
       
       if (mysql_num_rows($result) > 0) {
