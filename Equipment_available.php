@@ -144,7 +144,7 @@ include ("navbar.php");
           <br>
         <div class="row">
         <?PHP
-                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path, SUBSTRING(model.description,1,100) as description, model.model_id
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -157,13 +157,13 @@ include ("navbar.php");
             while($row = mysql_fetch_array($Equipment)){
                 echo"<div class='col-lg-4 col-md-6 mb-4'>";
                 echo"<div class='card h-100'>";
-                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<a href='item_details.php?model=" . $row['model_id'] . "&type=" . $row['type_id']."'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
                 echo"<div class='card-body'>";
                 echo"<h4 class='card-title'>";
-                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"<a href='item_details.php?model=" . $row['model_id']."'>" . $row['make'] . " " . $row['model']."</a>";
                 echo"</h4>";
                 echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
-                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"<p class='card-text'>". $row['description'] . "..." . "</p>";
                 echo"</div>";
                 echo"<div class='card-footer'>";
                 echo"</div>";
@@ -180,7 +180,7 @@ include ("navbar.php");
           <br>
         <div class="row">
         <?PHP
-                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path, SUBSTRING(model.description,1,100) as description, model.model_id
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -193,13 +193,13 @@ include ("navbar.php");
             while($row = mysql_fetch_array($Equipment)){
                 echo"<div class='col-lg-4 col-md-6 mb-4'>";
                 echo"<div class='card h-100'>";
-                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<a href='item_details.php?model=" . $row['model_id']."'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
                 echo"<div class='card-body'>";
                 echo"<h4 class='card-title'>";
-                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"<a href='item_details.php?model=" . $row['model_id']."'>" . $row['make'] . " " . $row['model']."</a>";
                 echo"</h4>";
                 echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
-                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"<p class='card-text'>". $row['description'] . "..." . "</p>";
                 echo"</div>";
                 echo"<div class='card-footer'>";
                 echo"</div>";
@@ -215,7 +215,7 @@ include ("navbar.php");
                   <br>
                 <div class="row">
         <?PHP
-                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path, SUBSTRING(model.description,1,100) as description, model.model_id
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -228,13 +228,13 @@ include ("navbar.php");
             while($row = mysql_fetch_array($Equipment)){
                 echo"<div class='col-lg-4 col-md-6 mb-4'>";
                 echo"<div class='card h-100'>";
-                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<a href='item_details.php?model=" . $row['model_id']."'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
                 echo"<div class='card-body'>";
                 echo"<h4 class='card-title'>";
-                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"<a href='item_details.php?model=" . $row['model_id']."'>" . $row['make'] . " " . $row['model']."</a>";
                 echo"</h4>";
                 echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
-                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"<p class='card-text'>". $row['description'] . "..." . "</p>";
                 echo"</div>";
                 echo"<div class='card-footer'>";
                 echo"</div>";
@@ -250,7 +250,7 @@ include ("navbar.php");
                   <br>
                 <div class="row">
         <?PHP
-                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path
+                $EquipmentList = "SELECT make.make, model.model, rental_length.rental_length, model.file_path, SUBSTRING(model.description,1,100) as description, model.model_id
             	  FROM model
             	  JOIN make ON model.make_id = make.make_id
             	  JOIN type ON model.type_id = type.type_id
@@ -263,13 +263,13 @@ include ("navbar.php");
             while($row = mysql_fetch_array($Equipment)){
                 echo"<div class='col-lg-4 col-md-6 mb-4'>";
                 echo"<div class='card h-100'>";
-                echo"<a href='#'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
+                echo"<a href='item_details.php?model=" . $row['model_id']."'><img class='card-img-top' src='" . $row['file_path']."' alt=''></a>";
                 echo"<div class='card-body'>";
                 echo"<h4 class='card-title'>";
-                echo"<a href='#'>" . $row['make'] . " " . $row['model']."</a>";
+                echo"<a href='item_details.php?model=" . $row['model_id']."'>" . $row['make'] . " " . $row['model']."</a>";
                 echo"</h4>";
                 echo"<h5>" . $row['rental_length'] . " Day Rental" . "</h5>";
-                echo"<p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>";
+                echo"<p class='card-text'>". $row['description'] . "..." . "</p>";
                 echo"</div>";
                 echo"<div class='card-footer'>";
                 echo"</div>";
@@ -298,12 +298,12 @@ include ("navbar.php");
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
           <?PHP
           
-          $ModelList = "SELECT make, model, file_path FROM model JOIN make on model.make_id = make.make_id ORDER BY Rand() LIMIT 10";
+          $ModelList = "SELECT make, model, file_path, model_id FROM model JOIN make on model.make_id = make.make_id ORDER BY Rand() LIMIT 10";
           $Models = mysql_query($ModelList);
           
           while($row = mysql_fetch_array($Models)){
             echo "<div class='item'>";
-            echo "<a href='' class='overlay-wrapper'>";
+            echo "<a href='item_details.php?model=" . $row['model_id']."' class='overlay-wrapper'>";
             echo "<img src='" . $row['file_path'] ."' alt='Project 1 image' class='img-responsive underlay'>";
             echo "<span class='overlay'>";
             echo "<span class='overlay-content'> <span class='h4'>" . $row['make'] . " " . $row['model'] . "</span>" . "</span>";
@@ -311,9 +311,9 @@ include ("navbar.php");
             echo "</a>";
             echo "<div class='item-details bg-noise'>";
             echo "<h4 class='item-title'>";
-            echo "<a href=''>" . $row['make'] . " " . $row['model'] . "</a>";
+            echo "<a href='item_details.php?model=" . $row['model_id']."'>" . $row['make'] . " " . $row['model'] . "</a>";
             echo "</h4>";
-            echo "<a href='' class='btn btn-more'><i class='fa fa-plus'></i>Read more</a>";
+            echo "<a href='item_details.php?model=" . $row['model_id']."' class='btn btn-more'><i class='fa fa-plus'></i>Read more</a>";
             echo "</div>";
             echo "</div>";
           }
@@ -342,7 +342,8 @@ include ("navbar.php");
 
   <!-- Template Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
-
+  <script src="/Project/js/freelancer.min.js"></script>
+  <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
   <script src="js/color-switcher.js"></script>
 
