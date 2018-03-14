@@ -4,6 +4,10 @@ include("connect.php");
 <form class="row" action="push/checkinpush.php" method="post">
   <div class="col-xs-12">
     <p id="check_out_error" style=<?php echo isset($_SESSION['check_in_error']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['check_in_error']; unset($_SESSION['check_in_error']); ?></p>
+<<<<<<< HEAD
+        <p id="check_out_success" style=<?php echo isset($_SESSION['check_in_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['check_in_success']; unset($_SESSION['check_in_success']); ?></p>
+    <div class="table-responsive">
+=======
     <p id="check_out_success" style=<?php echo isset($_SESSION['check_in_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['check_in_success']; unset($_SESSION['check_in_success']); ?></p>
     
     <div class="form-group row">
@@ -12,6 +16,7 @@ include("connect.php");
       </div>
     </div>
     <div class="table-responsive" id="checkin-table">
+>>>>>>> refs/remotes/origin/Nick
       <table class="table table-hover table-striped">
         <thead>
           <tr>
@@ -45,7 +50,11 @@ include("connect.php");
             while($row = mysql_fetch_array($checkedout)){
               if (date("Y-m-d") == date("Y-m-d", strtotime($row['due_date']))) {
                 echo "<tr class = 'warning'>";
+<<<<<<< HEAD
+              } elseif (date("Y-m-d H:i:s") > $row['due_date']) {
+=======
               } elseif (date("Y-m-d") > date("Y-m-d", strtotime($row['due_date']))) {
+>>>>>>> refs/remotes/origin/Nick
                 echo "<tr class = 'danger'>";
               } else{
                 echo "<tr class = 'success'>";
@@ -90,15 +99,26 @@ include("connect.php");
                           <label>Due Date: </label><?php echo " " . date('Y-m-d', strtotime($row['due_date'])) ?>
                         </div>
                         <div>
+<<<<<<< HEAD
+                          <label>Equipment status at time of Check in: </label>
+                          <div>
+                            <label class="radio-inline"><input type="radio" name="status_id" value='1'>Good</label>
+                            <label class="radio-inline"><input type="radio" name="status_id" value='2'>Needs Repair</label>
+=======
                           <label>Equipment status at time of check in: </label>
                           <div class="form-group">
                             <label class="radio-inline"><input type="radio" id="status_id" name="status_id" value="1" checked="checked">Good</label>
                             <label class="radio-inline"><input type="radio" id="status_id" name="status_id" value="2">Needs Repair</label>
+>>>>>>> refs/remotes/origin/Nick
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="message-text" class="control-label">Notes: </label>
+<<<<<<< HEAD
+                          <textarea class="form-control" id="message-text" name='notes'></textarea>
+=======
                           <textarea class="form-control" value="" type="text" id="notes" name="notes"></textarea>
+>>>>>>> refs/remotes/origin/Nick
                         </div>
                       </div>
                       <div class="modal-footer">
