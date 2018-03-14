@@ -4,42 +4,63 @@ include("../connect.php");
 
 //setting variables
 $user_id = $_SESSION['username_id'];
-$model_id = $_SESSION['model'];
+$model_id = $_GET['model'];
 
 //check if user is logged in
 if (isset($user_id)){
     
     //pull student id 
-    $getID = "SELECT student_id FROM student WHERE username_id = $user_id";
-    $student = mysql_fetch_array(mysql_query($getID))['student_id'];
-
+    // $getID = "SELECT student_id FROM student WHERE username_id = $user_id";
+    // $student = mysql_fetch_array(mysql_query($getID))['student_id'];
+    
+    
     //check to see if user already reserved
     $check = "SELECT * FROM reservation_list 
-    WHERE student_id = $student && model_id = $model_id";
-    $result1 = mysql_query($check);
-    $rows1 = mysql_num_rows($result1);
+        WHERE username_id = $user_id 
+        AND model_id = $model_id
+        AND fulfilled_indicator = 0";
+    $result = mysql_query($check);
+    $rows = mysql_num_rows($result);
     
     //if not found then reserve
-    if ($rows1 == 0){
-         //push to database
-        $reserve = "INSERT INTO reservation_list (model_id, student_id, fulfilled_indicator)
-        VALUES ($model_id, $student, '0')";
-        mysql_query($reserve);
+    if ($rows == 0) {
+        $ecount = "SELECT serial_number FROM equipment WHERE model_id = $themodel AND status_id = 1";
+        $eresult = mysql_query($ecount);
         
-        $message = "You have reserved item.";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-        header("Location: ../item_details.php");
+        $rcount = "SELECT reservation_id FROM reservation_list WHERE model_id = $model_id AND fulfilled_indicator = 0";
+        $rresult = mysql_query($rcount);
         
-    }else{//already reserved
-        $message = "You have already reserved this item.";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        $count = mysql_num_rows($eresult) - mysql_num_rows($rresult);
         
-        header("Location: ../item_details.php");
-        //header("Location: " . $_SERVER['HTTP_REFERER']);
+        if ($count > 0) {
+             //push to database
+            $reserve = "INSERT INTO reservation_list (model_id, username_id, date_reserved, fulfilled_indicator)
+                VALUES ($model_id, $user_id, NOW(), '0')";
+            
+            if (mysql_query($reserve)) {
+                $_SESSION['res_success'] = "You have reserved the item.";
+                
+                header("Location: ../item_details.php?model=$model_id");
+            } else {
+                $_SESSION['res_error'] = "Reservation error! Try again later.";
+                
+                header("Location: ../item_details.php?model=$model_id");
+            }
+        } else {
+            $_SESSION['res_error'] = "Reservation not made! None in stock.";
+            
+            header("Location: ../item_details.php?model=$model_id");
+        }
+    } else {//already reserved
+        $_SESSION['res_error'] = "You have already reserved this item.";
+        
+        header("Location: ../item_details.php?model=$model_id");
     }
     
-}else{// not logged in 
+} else {// not logged in 
+    $_SESSION['logerror'] = "You must be logged in to reserve equipment!";
+    $_SESSION['sendback'] = 'yes';
     header("Location: ../login.php");
-    Exit();
+    exit();
 }
 ?>
