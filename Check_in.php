@@ -1,13 +1,9 @@
 <?php
 include("connect.php");
 ?>
-<form class="row" action="push/checkinpush.php" method="post">
+<!--<form class="row" action="push/checkinpush.php" method="post">-->
   <div class="col-xs-12">
     <p id="check_out_error" style=<?php echo isset($_SESSION['check_in_error']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['check_in_error']; unset($_SESSION['check_in_error']); ?></p>
-<<<<<<< HEAD
-        <p id="check_out_success" style=<?php echo isset($_SESSION['check_in_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['check_in_success']; unset($_SESSION['check_in_success']); ?></p>
-    <div class="table-responsive">
-=======
     <p id="check_out_success" style=<?php echo isset($_SESSION['check_in_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['check_in_success']; unset($_SESSION['check_in_success']); ?></p>
     
     <div class="form-group row">
@@ -16,7 +12,6 @@ include("connect.php");
       </div>
     </div>
     <div class="table-responsive" id="checkin-table">
->>>>>>> refs/remotes/origin/Nick
       <table class="table table-hover table-striped">
         <thead>
           <tr>
@@ -32,29 +27,27 @@ include("connect.php");
         </thead>
         <tbody>
           <?php 
-            $checkedoutList = "SELECT r.rental_id, r.serial_number, make.make, m.model, u.username, e.first_name, e.last_name, r.due_date
+            $checkedoutList = "SELECT r.rental_id, r.serial_number, make.make, m.model, u.username, e2.first_name, e2.last_name, r.due_date, r.username_id
               FROM rental_record r
+              JOIN equipment e
+              ON r.serial_number = e.serial_number
               JOIN model m
-              ON r.model_id = m.model_id
-              JOIN employee e
-              ON r.checked_out_by = e.username_id
+              ON e.model_id = m.model_id
+              JOIN employee e2
+              ON r.checked_out_by = e2.username_id
               JOIN usernames u 
               ON r.username_id = u.username_id
               JOIN make
               ON m.make_id = make.make_id
               WHERE date_returned = '0000-00-00 00:00:00'
-              ORDER BY date(due_date), r.username_id, r.model_id";
+              ORDER BY date(due_date), r.username_id, e.model_id";
               
             $checkedout = mysql_query($checkedoutList);
             
             while($row = mysql_fetch_array($checkedout)){
               if (date("Y-m-d") == date("Y-m-d", strtotime($row['due_date']))) {
                 echo "<tr class = 'warning'>";
-<<<<<<< HEAD
-              } elseif (date("Y-m-d H:i:s") > $row['due_date']) {
-=======
               } elseif (date("Y-m-d") > date("Y-m-d", strtotime($row['due_date']))) {
->>>>>>> refs/remotes/origin/Nick
                 echo "<tr class = 'danger'>";
               } else{
                 echo "<tr class = 'success'>";
@@ -64,7 +57,18 @@ include("connect.php");
               echo "<td>" . $row['serial_number'] . "</td>";
               echo "<td>" . $row['make'] . "</td>";
               echo "<td>" . $row['model'] . "</td>";
-              echo "<td>" . $row['username'] . "</td>";
+              $studentname = "SELECT first_name, last_name 
+                              FROM student 
+                              WHERE username_id = '{$row['username_id']}'
+                              UNION 
+                              SELECT first_name, last_name
+                              FROM employee 
+                              WHERE username_id = '{$row['username_id']}'";
+                                $getname = mysql_query($studentname);
+                                while ($row3 = mysql_fetch_array($getname)){
+                                  echo "<td>" . $row3['first_name'] . " " . $row3['last_name'] . "</td>";
+                                }
+
               echo "<td>" . $row['first_name'] . " " . $row['last_name'] . "</td>";
               echo "<td>" . date('Y-m-d', strtotime($row['due_date'])) . "</td>";
               echo "<td>" . "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#modal_{$row['rental_id']}'><i class=\"fa fa-fw fa-angle-right\"></i></button>" . "</td>";
@@ -72,7 +76,7 @@ include("connect.php");
               echo "</tr>";
             
           ?>
-                
+                <form action="push/checkinpush.php" method="post">
                 <!-- Modal -->
                 <div class="modal fade" id="<?php echo "modal_{$row['rental_id']}"; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
@@ -83,55 +87,64 @@ include("connect.php");
                       </div>
                       <div class="modal-body">
                         <div>
-                          <label>Student Information: </label><?php echo " {$row['username']}"; 
-                                  //Show Students name/address
-                          
+                          <label>Student Information: </label><?php
+                                  
+                                $studentInfo = "SELECT first_name, last_name, middle_initial, email, phone_number 
+                                                FROM student 
+                                                WHERE username_id = '{$row['username_id']}'
+                                                UNION 
+                                                SELECT first_name, last_name, middle_initial, email, phone_number
+                                                FROM employee 
+                                                WHERE username_id = '{$row['username_id']}'";
+                                $getinfo = mysql_query($studentInfo);
+                                while ($row2 = mysql_fetch_array($getinfo)){
+                                  echo "<br>";
+                                  echo $row2['first_name'] . " " . $row2['last_name'];
+                                  echo "<br>";
+                                  echo $row2['email'];
+                                  echo "<br>";
+                                  echo $row2['phone_number'];
+                                }
                           
                           
                           
                           
                           ?>
                         </div>
+                        <br>
                         <div>
-                          <label>Equipment: </label><?php echo " {$row['make']} {$row['model']}"; ?>
+                          <label>Equipment: </label><br><?php echo " {$row['make']} {$row['model']}"; ?>
                         </div>
+                        <br>
                         <div>
-                          <label>Due Date: </label><?php echo " " . date('Y-m-d', strtotime($row['due_date'])) ?>
+                          <label>Due Date: </label><br><?php echo " " . date('Y-m-d', strtotime($row['due_date'])) ?>
                         </div>
+                        <br>
                         <div>
-<<<<<<< HEAD
-                          <label>Equipment status at time of Check in: </label>
-                          <div>
-                            <label class="radio-inline"><input type="radio" name="status_id" value='1'>Good</label>
-                            <label class="radio-inline"><input type="radio" name="status_id" value='2'>Needs Repair</label>
-=======
                           <label>Equipment status at time of check in: </label>
                           <div class="form-group">
-                            <label class="radio-inline"><input type="radio" id="status_id" name="status_id" value="1" checked="checked">Good</label>
+                            <label class="radio-inline"><input type="radio" id="status_id" name="status_id" value="1" checked>Good</label>
                             <label class="radio-inline"><input type="radio" id="status_id" name="status_id" value="2">Needs Repair</label>
->>>>>>> refs/remotes/origin/Nick
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="message-text" class="control-label">Notes: </label>
-<<<<<<< HEAD
-                          <textarea class="form-control" id="message-text" name='notes'></textarea>
-=======
-                          <textarea class="form-control" value="" type="text" id="notes" name="notes"></textarea>
->>>>>>> refs/remotes/origin/Nick
+                          <textarea class="form-control modal-textarea" value="" type="text" id="notes" name="notes"></textarea>
                         </div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"value='<?php echo"{$row['rental_id']}";?>' onClick='checkin(this)'>Complete Check In</button>
+                        <!--<button type="button" class="btn btn-primary" value='<?php echo"{$row['rental_id']}";?>' onClick='checkin(this, <?php echo "#modal_{$row['rental_id']}"; ?>)'>Complete Check In</button>-->
+                        <button type="submit" class="btn btn-primary" name="btn_submit" id="btn_submit" value='<?php echo"{$row['rental_id']}";?>'>Complete Check In</button>
                       </div>
                     </div>
                   </div>
                 </div>
+                </form>
                 <?php } ?>
           
         </tbody>
       </table>
     </div>
   </div>
-</form>
+<!--</form>-->
