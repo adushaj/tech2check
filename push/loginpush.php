@@ -8,7 +8,7 @@
     
     if (filter_var($myloginkey, FILTER_VALIDATE_EMAIL)) {
       // Check for email
-      $sql = "SELECT * FROM employee WHERE email = '$myloginkey' UNION SELECT * FROM student WHERE email = '$myloginkey'";
+      $sql = "SELECT username_id FROM employee WHERE email = '$myloginkey' UNION SELECT username_id FROM student WHERE email = '$myloginkey'";
       $result = mysql_query($sql);
       
       if (mysql_num_rows($result) > 0) {
@@ -74,8 +74,18 @@
       $_SESSION['username_id'] = $row['username_id'];
     }
     
+    //sends user back to items details after reserve attempt without being logged in
+    $model_id = $_SESSION['modelS'];
+    if ($_SESSION['sendback'] == 'yes'){
+      header("Location: ../item_details.php?model=$model_id");
+      $_SESSION['sendback'] == 'no';
+      exit;
+    }
     header("location: ../index.php");
     exit;
+      
+    
+    
   }
   
   $_SESSION['logerror'] = "Unknown error";
