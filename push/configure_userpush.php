@@ -89,6 +89,7 @@
         $notes = mysqli_real_escape_string($connection, $_POST['notes']);
         $employee_type_id = mysqli_real_escape_string($connection, $_POST['employee_type']);
         
+        // Validate email address
         if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
             $_SESSION['searcherror'] = "Please enter a valid email address!";
             $_SESSION['search_id'] = $old_username_id;
@@ -171,6 +172,76 @@
         }
         
         header("location: ../configure_user.php");
+        exit;
+    }
+    
+    if (isset($_POST['btn-user-save'])) {
+        $username_id = $_SESSION['username_id'];
+        $old_type = isset($_SESSION['employee_type']) ? 'employee' : null;
+        
+        $username = mysqli_real_escape_string($connection, $_POST['username']);  
+        $first_name = mysqli_real_escape_string($connection, $_POST['fname']);
+        $middle_initial = mysqli_real_escape_string($connection, $_POST['mi']);
+        $last_name = mysqli_real_escape_string($connection, $_POST['lname']);
+        $street_line1 = mysqli_real_escape_string($connection, $_POST['address1']);
+        $street_line2 = mysqli_real_escape_string($connection, $_POST['address2']);
+        $city = mysqli_real_escape_string($connection, $_POST['city']);
+        $state = strtoupper(mysqli_real_escape_string($connection, $_POST['state']));
+        $zip = mysqli_real_escape_string($connection, $_POST['zip']);
+        $phone_number = mysqli_real_escape_string($connection, $_POST['phone']);
+        $email_address = mysqli_real_escape_string($connection, $_POST['email']);
+        
+        // Validate email address
+        if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['searcherror'] = "Please enter a valid email address!";
+            
+            header("location: ../user_account.php");
+            exit;
+        }
+        
+        if ($old_type == "employee") {
+            $sql = "UPDATE employee 
+                SET 
+                first_name = '$first_name',
+                last_name = '$last_name',
+                middle_initial = '$middle_initial',
+                street_line_1 = '$street_line1',
+                street_line_2 = '$street_line2',
+                city = '$city',
+                state = '$state',
+                zip_code = '$zip',
+                phone_number = '$phone_number',
+                email = '$email_address'
+                WHERE username_id = '$username_id'";
+            
+            if (!mysql_query($sql)) {
+                $_SESSION['searcherror'] = "Update Failed!";
+            } else {
+                $_SESSION['updatesuccess'] = "Update successful!";
+            }
+        } else {
+            $sql = "UPDATE student 
+                SET 
+                first_name = '$first_name',
+                last_name = '$last_name',
+                middle_initial = '$middle_initial',
+                street_line_1 = '$street_line1',
+                street_line_2 = '$street_line2',
+                city = '$city',
+                state = '$state',
+                zip_code = '$zip',
+                phone_number = '$phone_number',
+                email = '$email_address'
+                WHERE username_id = '$username_id'";
+                
+            if (!mysql_query($sql)) {
+                $_SESSION['searcherror'] = "Update Failed!";
+            } else {
+                $_SESSION['updatesuccess'] = "Update successful!";
+            }
+        }
+        
+        header("location: ../user_account.php");
         exit;
     }
     

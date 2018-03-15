@@ -1,17 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1 id="h1">
+                    Please enable popups and then refresh this page.
+                </h1>
+            </div>
+        </div>
 <?php
     include("../connect.php");
     
     // Get URL parameters
-    $type_id = mysql_real_escape_string($_GET['type_id']);
-    $model_id = mysql_real_escape_string($_GET['model_id']);
-    $username = mysql_real_escape_string($_GET['username']);
-    $serial = mysql_real_escape_string($_GET['serial']);
-    $res_id = mysql_real_escape_string($_GET['reserved']);
+    $username = mysql_real_escape_string($_POST['username']);
+    $serial = mysql_real_escape_string($_POST['serial']);
     
-    // Get type_id if not set
-    if (!isset($_GET['type_id'])) {
-        $sql = "SELECT type_id FROM model WHERE model_id = '$model_id'";
-        $type_id = mysql_fetch_array(mysql_query($sql))['type_id'];
+    // Get type_id and model_id
+    $sql = "SELECT m.type_id, m.model_id 
+        FROM equipment e
+        JOIN model m
+        ON e.model_id = m.model_id
+        WHERE e.serial_number = '$serial'";
+    $type_id = mysql_fetch_array(mysql_query($sql))['type_id'];
+    $model_id = mysql_fetch_array(mysql_query($sql))['model_id'];
+    
+    // Check condition of equipment
+    if (!isset($_POST['condition'])) {
+        $_SESSION['check_out_error'] = "Please verify good condition of equipment!";
+        header("location: ../frontdesk_dashboard.php?type_id=$type_id&model_id=$model_id");
+        exit;
     }
     
     // Search for username
@@ -20,7 +39,7 @@
     if (mysql_num_rows($result) > 0) {
         $username_id = mysql_fetch_array($result)['username_id'];
     } else {
-        $_SESSION['check_out_error'] = "Username not found!";
+        $_SESSION['check_out_error'] = "Username '$username' not found!";
         header("location: ../frontdesk_dashboard.php?type_id=$type_id&model_id=$model_id");
         exit;
     }
@@ -59,9 +78,9 @@
     
     // Add to rental_record
     $checkedOut = "INSERT INTO rental_record 
-        (serial_number, model_id, username_id, checked_out_date, due_date, checked_out_by) 
+        (serial_number, username_id, checked_out_date, due_date, checked_out_by) 
         VALUES 
-        ('$serial', '$model_id', '$username_id', NOW(), NOW()+INTERVAL $rental_length DAY, '{$_SESSION['username_id']}')";
+        ('$serial', '$username_id', NOW(), NOW()+INTERVAL $rental_length DAY, '{$_SESSION['username_id']}')";
     $result = mysql_query($checkedOut);
     
     if ($result) {
@@ -74,12 +93,35 @@
             $sql = "UPDATE reservation_list SET fulfilled_indicator = '1' WHERE reservation_id = '$res_id'";
             mysql_query($sql);
         }
-        
         $_SESSION['check_out_success'] = "Equipment checked out!";
-        header("location: ../frontdesk_dashboard.php");
+        
+        $invoice_sql = "SELECT MAX(rental_id) AS rid FROM rental_record WHERE serial_number = '$serial'";
+        $rental_id = mysql_fetch_array(mysql_query($invoice_sql))['rid'];
+?>
+
+        <script type="text/javascript">
+            var popup = window.open("../invoice.php?rental_id=<?= $rental_id ?>", "_blank");
+            
+            if (history.pushState) {
+                window.history.pushState("object or string", "Title", "../frontdesk_dashboard.php");
+            } else {
+                document.location.href = "../frontdesk_dashboard.php";
+            }
+            
+            if (!popup || popup.closed || typeof popup.closed=='undefined') {
+                document.getElementById("h1").innerHTML = "Please enable popups and then refresh this page.";
+            } else {
+                location.reload();
+            }
+        </script>
+
+<?php
+        // header("location: ../frontdesk_dashboard.php");
     } else {
         $_SESSION['check_out_error'] = "Error checking out equipment!";
         header("location: ../frontdesk_dashboard.php?type_id=$type_id&model_id=$model_id");
         exit;
     }
 ?>
+    </body>
+</html>

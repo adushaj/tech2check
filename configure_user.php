@@ -39,17 +39,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-  
-  <style type="text/css">
-    .btn-test button{
-      width: 30%;
-      text-align: center;
-    }
-    .nopadding {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-  </style>
 </head>
 
 <!-- ======== @Region: body ======== -->

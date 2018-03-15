@@ -287,10 +287,48 @@
                                         }
                                         
                                         echo "<td>" . $row['rental_length'] . " days</td>";
-                                        echo "<td>" . "<button type=\"button\" name=\"btn-checkout\" class=\"btn btn-default\" onClick=\"checkout(this, '#row_$cnt')\" value=\"{$row['serial_number']}\"><i class=\"fa fa-fw fa-angle-right\"></i></button>" . "</td>";
+                                        // echo "<td>" . "<button type=\"button\" name=\"btn-checkout\" class=\"btn btn-default\" onClick=\"checkout(this, '#row_$cnt')\" value=\"{$row['serial_number']}\"><i class=\"fa fa-fw fa-angle-right\"></i></button>" . "</td>";
+                                        echo "<td>" . "<button type='button' class='btn btn-default' name='btn-checkout' data-toggle='modal' data-target='#modal_{$row['serial_number']}'><i class=\"fa fa-fw fa-angle-right\"></i></button>" . "</td>";
                                         echo "<td id='model' style='display:none;'>" . $row['model_id'] . "</td>";
                                         echo "</tr>";
+                                ?>
+                                
+                                <!-- Equipment Modal -->
+                                <div class="modal fade mfp-hide" id="<?php echo "modal_{$row['serial_number']}"; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog bg-white" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h3 class="modal-title">Check Out</h3>
+                                            </div>
+                                            <form action="push/checkoutpush.php" method="post">
+                                                <div class="modal-body">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-6">
+                                                                <label for="username">Username</label>
+                                                                <input class="form-control" type="text" id="username" name="username" maxlength="25" required placeholder="Enter username of student" <?php echo isset($user['username']) ? "value='{$user['username']}'" : ""; ?>></input>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="condition">Is the equipment in good condition?</label>
+                                                                <br>
+                                                                <input type="checkbox" id="condition" name="condition"></input>
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" id="serial" name="serial" value="<?= $row['serial_number'] ?>">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                         
+                                <?php
+                                        unset($user);
                                         $cnt++;
                                     }
                                 ?>

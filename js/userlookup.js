@@ -1,7 +1,8 @@
 function lookup(button) {
     var lname = $('#lname').text();
     if (lname == null) {
-        return;
+        lname = "test";
+        return false;
     }
     
     // queryParameters -> handles the query string parameters
