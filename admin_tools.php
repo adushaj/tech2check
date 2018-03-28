@@ -110,6 +110,14 @@
                Configure User
               </h4>
           </div>
+          <div class="col-md-4 text-center">
+            <span class="fa-stack fa-5x">
+              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+              <a href="Blog_post.php"><i class="fa fa-commenting fa-stack-1x fa-inverse" aria-hidden="true"></i></a> </span>
+            <h4 class="text-weight-strong">
+               Blog Post
+              </h4>
+          </div>
         </div>
       </div>
     </div>
