@@ -1,0 +1,11 @@
+input[type="submit"]{
+    background-color : #A239CA;
+    color: White;
+}
+input[type="submit"]:hover {
+    background-color : #A239CA; 
+    color: White;
+}
+textarea {
+    resize: vertical;
+}
