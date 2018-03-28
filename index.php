@@ -31,7 +31,6 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 </head>
-
 <body class="page-index has-hero">
   <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
     <!--Header & navbar-branding region-->
@@ -40,49 +39,61 @@
     ?>
     <div class="hero" id="highlighted">
       <div class="inner">
-        <!--Slideshow-->
-        <div id="highlighted-slider" class="container">
-          <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
-            <!--Slideshow content-->
-            <!--Slide 1-->
-            <div class="item">
+        <div id="indexCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#indexCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#indexCarousel" data-slide-to="1"></li>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+              <div class="item active">
               <div class="row">
                 <div class="col-md-6 col-md-push-6 item-caption">
                   <h2 class="h1 text-weight-light">
                       Welcome to <span class="text-primary">Tech2Check</span>
                     </h2>
-                  <p>Easily find what you are looking for and if it’s available.  Checking out equipment is easy and free for students. We also offer services for computer repair, installs, and builds. View our testimonials from our customers below! </p>
+                  <p>Easily find what you are looking for and if it’s available.  Checking out equipment is easy <br> and free for students. We also offer services for computer repair, installs, and builds. <br> View our testimonials from our customers below! </p>
                   <a href="/Project/Equipment_available.php" class="btn btn-more btn-lg i-right">Available Equipment <i class="fa fa-plus"></i></a>
                 </div>
-                <div class="col-md-6 col-md-pull-6 hidden-xs">
+                <div class="col-md-6 col-md-pull-6 hidden-sm hidden-xs">
                   <img src="img/slides/laptop.png" alt="Slide 1" class="center-block img-responsive">
                 </div>
               </div>
-            </div>
-            <!--Slide 2-->
-            <div class="item">
-              <div class="row">
+              </div>
+              <div class="item">
+                <div class="row">
                 <div class="col-md-6 text-right-md item-caption">
                   <h2 class="h1 text-weight-light">
                       <span class="text-primary">Tech2Check</span> Not yet registered?
                     </h2>
                   <h4>
                       Easily join today!
-                    </h4>
+                  </h4>
                   <p>Joining Tech2Check is free! <br> The information we will need: Your name, home address, phone number, and email. </p>
                   <a href="register.php" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Register</a>
                 </div>
-                <div class="col-md-6 hidden-xs">
-                  <img src="img/slides/slide2.png" alt="Slide 2" class="center-block img-responsive">
+                <div class="col-md-6 hidden-sm hidden-xs">
+                  <img src="img/slides/xbox.png" alt="Slide 2" class="center-block img-responsive">
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#indexCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#indexCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+            </div>
+          
         </div>
       </div>
     </div>
   </div>
-
   <!-- ======== @Region: #content ======== -->
   <div id="content">
     <!-- Mission Statement -->
@@ -90,7 +101,7 @@
       <div class="container">
         <h2 class="text-shadow-white">
             We are experienced professionals in information technology, based in Rochester, Michigan. Feel free to contact us for any need or concern.
-            <div id="contact-btn" class="btn btn-more"><i class="fa fa-plus"></i>Contact</a></div>
+            <a href="#contact" class="btn btn-more"><i class="fa fa-plus"></i>Contact</a>
           </h2>
       </div>
     </div>
@@ -206,13 +217,15 @@
         </div>
       </div>
     </div>
-    <div class="block block-pd-sm block-bg-grey-dark block-bg-overlay block-bg-overlay-6 text-center" data-block-bg-img="https://picjumbo.imgix.net/HNCK1088.jpg?q=40&amp;w=1650&amp;sharp=30" data-stellar-background-ratio="0.3">
+    <div class="block block-pd-sm block-bg-grey-dark block-bg-overlay block-bg-overlay-6 text-center" data-block-bg-img="https://wallpaper.wiki/wp-content/uploads/2017/05/High-Tech-HD-Background.jpg" data-stellar-background-ratio="0.3">
       <h2 class="h-xlg h1 m-a-0">
+        <span data-counter-up>
         <?php
           $customers = "SELECT * FROM usernames";
           $result = mysql_query($customers);
           echo mysql_num_rows($result);
           ?>
+        </span>
         </h2>
       <h3 class="h-lg m-t-0 m-b-lg">
           Happy Customers!
@@ -230,68 +243,50 @@
               Testimonials
             </h3>
           <blockquote>
-            <p>Tech2Check is such a wonderful company, the scope of their vision is HUGE.</p>
-            <img style="margin:0px -10px"  src="img/misc/trump.png" alt="Donald Trump">
+            <p>Check out ... ANOTHA ONE!</p>
+            <img style="margin:0px -10px"  src="img/misc/khaled.png" alt="DJ Khaled">
             <small>
-                <strong>Donald Trump</strong>
+                <strong>DJ Khaled</strong>
                 <br>
-                President of the United States of America
+                American record producer, radio personality, DJ, record label executive and author
               </small>
           </blockquote>
         </div>
         <!--Latest Blog posts-->
+        
         <div class="col-md-6 blog-roll">
           <h3 class="block-title">
               Latest From Our Blog
             </h3>
           <!-- Blog post 1-->
           <div class="media">
-            <div class="media-left hidden-xs">
-              <!-- Date desktop -->
-              <div class="date-wrapper"> <span class="date-m">Jan</span> <span class="date-d">19</span> </div>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">
-                  <a href="#" class="text-weight-strong">Website development has passed sprint 1</a>
-                </h4>
-              <!-- Meta details mobile -->
-              <ul class="list-inline meta text-muted visible-xs">
-                <li><i class="fa fa-calendar"></i> <span class="visible-md">Created:</span> Fri 19 Jan 2018</li>
-                <li><i class="fa fa-user"></i> <a href="#">Joe</a></li>
-              </ul>
-              <p>
-                Website development has been going smoothly we are transitioning to sprint 2. 
-              </p>
-            </div>
+            <?php
+            $psql = "SELECT * FROM Blog_post
+            ORDER BY Date DESC LIMIT 1";
+            $result = mysql_query($psql);
+            $data = mysql_fetch_array($result);
+            echo "<i>" . $data['Date'] . "</i>" . "<h4><b><font color=#A239CA>" 
+            . $data['Title'] . "</font></b></h4>" . $data['Content'];
+            ?>
           </div>
           <!-- Blog post 2 -->
           <div class="media">
-            <div class="media-left hidden-xs">
-              <!-- Date desktop -->
-              <div class="date-wrapper"> <span class="date-m">Jan</span> <span class="date-d">03</span> </div>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">
-                  <a href="#" class="text-weight-strong">Service porposal.</a>
-                </h4>
-              <!-- Meta details mobile -->
-              <ul class="list-inline meta text-muted visible-xs">
-                <li><i class="fa fa-calendar"></i> <span class="visible-md">Created:</span> Thu 3rd Jan 2018</li>
-                <li><i class="fa fa-user"></i> <a href="#">Joe</a></li>
-              </ul>
-              <p>
-                Our service porposal has been accepted. We have begun plans on our website development and started sprint 0.
-              </p>
-            </div>
+            <?php
+            $p2sql = "SELECT * FROM Blog_post
+            WHERE Date < (SELECT MAX(Date) FROM Blog_post)
+            ORDER BY Date DESC LIMIT 1";
+            $p2result = mysql_query($p2sql);
+            $p2data = mysql_fetch_array($p2result);
+            echo "<i>" . $p2data['Date'] . "</i>" . "<h4><b><font color=#A239CA>" 
+            . $p2data['Title'] . "</font></b></h4>" . $p2data['Content'];
+            ?>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- /content -->
-  <!-- Call out block -->
-  <div class="block block-pd-sm block-bg-primary">
-  </div>
+
 
   <!-- ======== @Region: #footer ======== -->
   <?php
@@ -307,11 +302,11 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
+  <!-- Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
-
-  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-  <script src="js/color-switcher.js"></script>
+  <script src="/Project/js/freelancer.min.js"></script>
+  <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>
+  
 
   <!--Contactform script -->
   <script src="contactform/contactform.js"></script>
