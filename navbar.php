@@ -13,10 +13,6 @@
       <img class="img-responsive" alt="Brand" src="img/logo.png">
     </a>
     
-<<<<<<< HEAD
-    <div class="navbar-text social-media social-media-inline pull-right">
-      <!--<div class="col-md-4 col-md-offset-8">-->
-=======
     <?php 
       if (isset($_SESSION['username_id'])) { 
         $nav_sql = "SELECT first_name, last_name, email FROM student WHERE username_id = '{$_SESSION['username_id']}'
@@ -68,7 +64,6 @@
     <?php } else { ?>
     <div class="navbar-text social-media social-media-inline pull-right">
       <div class="col-md-4 col-md-offset-8">
->>>>>>> Taylor
         <br>
         <ul class="list-inline user-menu pull-right">
           <?php if (isset($_SESSION['username_id'])) { ?>
@@ -80,10 +75,7 @@
         </ul>
       <!--</div>-->
     </div>
-<<<<<<< HEAD
-=======
     <?php } ?>
->>>>>>> Taylor
     
     <!-- Navbar Items -->
     <div class="collapse navbar-collapse" id="nav_collapse">
@@ -106,17 +98,10 @@
           <!--<li class="dropdown">-->
           <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">TECH<b class="caret"></b></a>-->
           <!-- Dropdown Menu for Tech -->
-<<<<<<< HEAD
-          <ul class="dropdown-menu">
-            <li class="dropdown-header">Tech Control Panel</li>
-            <li><a href="" tabindex="-1" class="menu-item">Equipment Status</a></li>
-          </ul>
-=======
           <!--<ul class="dropdown-menu">-->
           <!--  <li class="dropdown-header">Tech Control Panel</li>-->
           <!--  <li><a href="equipment_servicing.php" tabindex="-1" class="menu-item">Equipment Servicing</a></li>-->
           <!--</ul>-->
->>>>>>> Taylor
         <?php } ?>
         
         <!-- Admin Only -->
@@ -125,13 +110,6 @@
           <!--<li class="dropdown">-->
           <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">ADMIN<b class="caret"></b></a>-->
           <!-- Dropdown Menu for Admin -->
-<<<<<<< HEAD
-          <ul class="dropdown-menu">
-            <li class="dropdown-header">Admin Control Panel</li>
-            <li><a href="configure_user.php" tabindex="-1" class="menu-item">Configure User</a></li>
-            <li><a href="add_equipment.php" tabindex="-1" class="menu-item">Add Equipment</a></li>
-          </ul>
-=======
           <!--<ul class="dropdown-menu">-->
           <!--  <li class="dropdown-header">Admin Control Panel</li>-->
           <!--  <li><a href="configure_user.php" tabindex="-1" class="menu-item">Configure User</a></li>-->
@@ -140,7 +118,6 @@
           <!--  <li><a href="rental_details.php" tabindex="-1" class="menu-item">Lookup Rental Details</a></li>-->
           <!--  <li><a href="admin_tools.php" tabindex="-1" class="menu-item">Admin Page Concept</a></li>-->
           <!--</ul>-->
->>>>>>> Taylor
         <?php } ?>
       </ul>
     </div>

@@ -24,11 +24,7 @@ if (isset($user_id)){
     
     //if not found then reserve
     if ($rows == 0) {
-<<<<<<< HEAD
-        $ecount = "SELECT serial_number FROM equipment WHERE model_id = $themodel AND status_id = 1";
-=======
         $ecount = "Select serial_number from equipment where model_id = $model_id";
->>>>>>> Taylor
         $eresult = mysql_query($ecount);
         
         $rcount = "SELECT reservation_id FROM reservation_list WHERE model_id = $model_id AND fulfilled_indicator = 0";
@@ -63,11 +59,6 @@ if (isset($user_id)){
     
 } else {// not logged in 
     $_SESSION['logerror'] = "You must be logged in to reserve equipment!";
-<<<<<<< HEAD
-    $_SESSION['sendback'] = 'yes';
-=======
-    
->>>>>>> Taylor
     header("Location: ../login.php");
     exit();
 }
