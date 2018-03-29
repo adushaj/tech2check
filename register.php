@@ -35,9 +35,6 @@
     .page{
       display: none;
     }
-    .capitalize{
-      text-transform: capitalize;
-    }
   </style>
   
 </head>
@@ -106,7 +103,7 @@
                       <div class="form-group">
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                        <input type="text" class="form-control capitalize" placeholder="Middle Initial (Optional)" id="middleinitial" name="middleinitial" maxlength="1" <?php if (isset($_SESSION['reg_middleinitial'])) { echo "value=\"{$_SESSION['reg_middleinitial']}\""; unset($_SESSION['reg_middleinitial']); } ?>>
+                        <input type="text" class="form-control all-caps" placeholder="Middle Initial (Optional)" id="middleinitial" name="middleinitial" maxlength="1" <?php if (isset($_SESSION['reg_middleinitial'])) { echo "value=\"{$_SESSION['reg_middleinitial']}\""; unset($_SESSION['reg_middleinitial']); } ?>>
                       </div>
                     </div>
                     <div class="form-group">
@@ -118,25 +115,25 @@
                     <div class="form-group">
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-fw fa-address-book-o"></i></span>
-                        <input type="text" class="form-control" placeholder="Street Address Line 1" id="streetaddress1" name="streetaddress1" maxlength="50" <?php if (isset($_SESSION['reg_streetaddress1'])) { echo "value=\"{$_SESSION['reg_streetaddress1']}\""; unset($_SESSION['reg_streetaddress1']); } ?> required>
+                        <input type="text" class="form-control capitalize" placeholder="Street Address Line 1" id="streetaddress1" name="streetaddress1" maxlength="50" <?php if (isset($_SESSION['reg_streetaddress1'])) { echo "value=\"{$_SESSION['reg_streetaddress1']}\""; unset($_SESSION['reg_streetaddress1']); } ?> required>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-fw fa-address-book-o"></i></span>
-                        <input type="text" class="form-control" placeholder="Street Address Line 2 (Optional)" id="streetaddress2" name="streetaddress2" maxlength="50" <?php if (isset($_SESSION['reg_streetaddress2'])) { echo "value=\"{$_SESSION['reg_streetaddress2']}\""; unset($_SESSION['reg_streetaddress2']); } ?>>
+                        <input type="text" class="form-control capitalize" placeholder="Street Address Line 2 (Optional)" id="streetaddress2" name="streetaddress2" maxlength="50" <?php if (isset($_SESSION['reg_streetaddress2'])) { echo "value=\"{$_SESSION['reg_streetaddress2']}\""; unset($_SESSION['reg_streetaddress2']); } ?>>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-fw fa-address-book-o"></i></span>
-                        <input type="text" class="form-control" placeholder="City" id="city" name="city" maxlength="50" <?php if (isset($_SESSION['reg_city'])) { echo "value=\"{$_SESSION['reg_city']}\""; unset($_SESSION['reg_city']); } ?> required>
+                        <input type="text" class="form-control capitalize" placeholder="City" id="city" name="city" maxlength="50" <?php if (isset($_SESSION['reg_city'])) { echo "value=\"{$_SESSION['reg_city']}\""; unset($_SESSION['reg_city']); } ?> required>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-fw fa-address-book-o"></i></span>
-                        <input type="text" class="form-control" placeholder="State (MI, CA, NY, ...)" id="state" name="state" maxlength="2" <?php if (isset($_SESSION['reg_state'])) { echo "value=\"{$_SESSION['reg_state']}\""; unset($_SESSION['reg_state']); } ?> required>
+                        <input type="text" class="form-control all-caps" placeholder="State (MI, CA, NY, ...)" id="state" name="state" maxlength="2" <?php if (isset($_SESSION['reg_state'])) { echo "value=\"{$_SESSION['reg_state']}\""; unset($_SESSION['reg_state']); } ?> required>
                       </div>
                     </div>  
                     <div class="form-group">
@@ -203,7 +200,8 @@
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="js/custom.js"></script>
-
+  <script src="/Project/js/freelancer.min.js"></script>
+  <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
   <script src="js/color-switcher.js"></script>
 

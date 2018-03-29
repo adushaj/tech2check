@@ -1,6 +1,7 @@
 <?php
     include("../connect.php");
     
+<<<<<<< HEAD
     // $rental_id = mysql_real_escape_string($_GET['rental_id']);
     // $notes = mysql_real_escape_string($_GET['notes']);
     // $status = mysql_real_escape_string($_GET['status_id']);
@@ -8,6 +9,11 @@
     $rental_id = mysql_real_escape_string($_POST['btn_submit']);
     $notes = mysql_real_escape_string($_POST['notes']);
     $status = mysql_real_escape_string($_POST['status_id']);
+=======
+    $rental_id = mysql_real_escape_string($_GET['rental_id']);
+    $notes = mysql_real_escape_string($_GET['notes']);
+    $status = mysql_real_escape_string($_GET['status_id']);
+>>>>>>> Taylor
     
     
     
@@ -18,7 +24,11 @@
     //the check in. 
     
     
+<<<<<<< HEAD
     echo "$rental_id <br> $notes <br> $status";
+=======
+    
+>>>>>>> Taylor
     
     $updaterental = "UPDATE rental_record
                     SET date_returned = NOW(),
