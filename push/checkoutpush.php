@@ -14,8 +14,10 @@
     include("../connect.php");
     
     // Get URL parameters
-    $username = mysql_real_escape_string($_POST['username']);
+    $username_id = mysql_real_escape_string($_POST['btn-checkout']);
     $serial = mysql_real_escape_string($_POST['serial']);
+    $lname = mysql_real_escape_string($_POST['lname']);
+    $q = mysql_real_escape_string($_POST['q']);
     
     // Get type_id and model_id
     $sql = "SELECT m.type_id, m.model_id 
@@ -28,19 +30,8 @@
     
     // Check condition of equipment
     if (!isset($_POST['condition'])) {
-        $_SESSION['check_out_error'] = "Please verify good condition of equipment!";
-        header("location: ../frontdesk_dashboard.php?type_id=$type_id&model_id=$model_id");
-        exit;
-    }
-    
-    // Search for username
-    $sql = "SELECT username_id FROM usernames WHERE username = '$username'";
-    $result = mysql_query($sql);
-    if (mysql_num_rows($result) > 0) {
-        $username_id = mysql_fetch_array($result)['username_id'];
-    } else {
-        $_SESSION['check_out_error'] = "Username '$username' not found!";
-        header("location: ../frontdesk_dashboard.php?type_id=$type_id&model_id=$model_id");
+        $_SESSION['modal_error'] = "Please verify good condition of equipment!";
+        header("location: ../Check_out.php?type_id=$type_id&model_id=$model_id&lname=$lname&q=$q");
         exit;
     }
     
@@ -62,7 +53,7 @@
         
         if ($ecnt <= $rcnt) {
             $_SESSION['check_out_error'] = "Equipment is reserved!";
-            header("location: ../frontdesk_dashboard.php?type_id=$type_id&model_id=$model_id");
+            header("location: ../Check_out.php?type_id=$type_id&model_id=$model_id");
             exit;
         }
     }
@@ -103,9 +94,9 @@
             var popup = window.open("../invoice.php?rental_id=<?= $rental_id ?>", "_blank");
             
             if (history.pushState) {
-                window.history.pushState("object or string", "Title", "../frontdesk_dashboard.php");
+                window.history.pushState("object or string", "Title", "../Check_out.php");
             } else {
-                document.location.href = "../frontdesk_dashboard.php";
+                document.location.href = "../Check_out.php";
             }
             
             if (!popup || popup.closed || typeof popup.closed=='undefined') {
@@ -116,10 +107,10 @@
         </script>
 
 <?php
-        // header("location: ../frontdesk_dashboard.php");
+        // header("location: ../Check_out.php");
     } else {
         $_SESSION['check_out_error'] = "Error checking out equipment!";
-        header("location: ../frontdesk_dashboard.php?type_id=$type_id&model_id=$model_id");
+        header("location: ../Check_out.php?type_id=$type_id&model_id=$model_id");
         exit;
     }
 ?>

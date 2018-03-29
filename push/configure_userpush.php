@@ -175,6 +175,27 @@
         exit;
     }
     
+    if (isset($_POST['btn-delete-modal'])) {
+        if ($old_type = 'student') {
+            $sql = "DELETE FROM student WHERE username_id = '$old_username_id'";
+        } else {
+            $sql = "DELETE FROM employee WHERE username_id = '$old_username_id'";
+        }
+        
+        if (mysql_query($sql)) {
+            $sql = "DELETE FROM usernames WHERE username_id = '$old_username_id'";
+            
+            if (mysql_query($sql)) {
+                $_SESSION['updatesuccess'] = "User deleted!";
+            }
+        } else {
+            $_SESSION['searcherror'] = 'User not found!';
+        }
+        
+        header("location: ../configure_user.php");
+        exit;
+    }
+    
     if (isset($_POST['btn-user-save'])) {
         $username_id = $_SESSION['username_id'];
         $old_type = isset($_SESSION['employee_type']) ? 'employee' : null;

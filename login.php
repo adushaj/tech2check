@@ -61,7 +61,9 @@
                 </h3>
             </div>
             <div class="panel-body">
-              <p id="logerror" style="color:red"><?php echo $_SESSION['logerror']; unset($_SESSION['logerror']); ?></p>
+              <p id="logerror" style=<?php echo isset($_SESSION['logerror']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['logerror']; unset($_SESSION['logerror']); ?></p>
+              <p id="logsuccess" style=<?php echo isset($_SESSION['logsuccess']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['logsuccess']; unset($_SESSION['logsuccess']); ?></p>
+              
               <form action="push/loginpush.php" id="login" method="post">
                 <fieldset>
                   <div class="form-group">
@@ -80,6 +82,7 @@
                 </fieldset>
               </form>
               <p class="m-b-0 m-t">Not signed up? <a href="register.php">Sign up here</a>.</p>
+              <p class="m-b-0 m-t">Forgot your password? <a href="password_reset.php">Reset it here</a>.</p>
             </di  v>
           </div>
         </div>
@@ -98,7 +101,8 @@
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="js/custom.js"></script>
-
+  <script src="/Project/js/freelancer.min.js"></script>
+  <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
   <script src="js/color-switcher.js"></script>
 

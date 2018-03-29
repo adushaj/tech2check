@@ -244,7 +244,7 @@
                     <button class="btn btn-primary" id="btn-edit" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square-o fa-fw"></i></button>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-danger" id="btn-delete" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o fa-fw"></i></button>
+                    <button class="btn btn-danger" id="btn-delete" data-toggle="modal" data-target="#modal"><i class="fa fa-trash-o fa-fw"></i></button>
                   </div>
                   <div class="form-group">
                     <button class="btn btn-info" id="btn-employee" data-toggle="tooltip" title="Edit Employee Type"><i class="fa fa-user-o fa-fw"></i></button>
@@ -254,6 +254,26 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Delete User?</h4>
+        </div>
+        <form action="push/configure_userpush.php" method="POST">
+          <div class="modal-body">
+              Please enter the username <b>'<?= mysql_fetch_array(mysql_query("SELECT * FROM usernames WHERE username_id = '{$_SESSION['search_id']}'"))['username'] ?></b>' below to confirm the deletion.
+              <input class="form-control" type="text" name="del_user" id="del_user"/>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-danger" name="btn-delete-modal" id="btn-delete-modal" disabled>Delete!</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

@@ -22,6 +22,14 @@ $("#radio_student").change(function() {
     }
 });
 
+$('#del_user').on('keyup', function() {
+    if ($('#username').val() == $('#del_user').val()) {
+        $('#btn-delete-modal').removeAttr('disabled');
+    } else {
+        $('#btn-delete-modal').attr('disabled', true);
+    }
+});
+
 $('#btn-edit').click(function() {
     if (emp == '-1') {
         $('#employee').hide();

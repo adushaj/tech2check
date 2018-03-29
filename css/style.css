@@ -43,12 +43,26 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+.lb-sm {
+  font-size: 12px;
+}
+
+.lb-md {
+  font-size: 14px;
+}
+
+.lb-lg {
+  font-size: 16px;
+}
+.hiddenLabel {
+  visibility: hidden;
+}
 
 
 
 
 .btn {
-  text-shadow: none;
+ text-shadow: none;
 }
 .btn-shadow {
   -webkit-box-shadow: 0 1px 5px #969696;
