@@ -55,54 +55,6 @@
         </h2>
       </div>
     </div>
-  <!--  <div class="row col-xs-12">-->
-  <!--    <form action="push/serial_lookuppush.php" method="post">-->
-      <!--Search Service History-->
-  <!--    <div class="from-group row">-->
-  <!--    <div class="col-xs-4">-->
-        <!-- Search Bar -->
-  <!--      <input class="form-control" id="serial" name="serial" placeholder="Please enter serial number" value=<?php echo isset($_GET['serial']) ? $_GET['serial'] : ''; ?>>-->
-  <!--    </div>-->
-  <!--    <div class="row col-xs-4">-->
-  <!--      <button class="form-control btn btn-primary btn-left" id="btn-search" name="btn-search" data-toggle='modal' data-target='#serialModal'type="submit">Search</button>-->
-        <!--<div class="row col-xs-6">-->
-  <!--      <button class="btn btn-danger btn-primary btn-right" id="btn-clear" name="btn-clear" type="submit">Clear</button>-->
-        <!--</div>-->
-  <!--    </div>-->
-  <!--<div id="serialModal" class="modal fade" role="dialog">-->
-  <!--<div class="modal-dialog">-->
-    <!-- Modal content-->
-  <!--  <div class="modal-content">-->
-  <!--    <div class="modal-header">-->
-  <!--      <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-  <!--      <h4 class="modal-title">Service History</h4>-->
-  <!--    </div>-->
-  <!--    <div class="modal-body">-->
-  <!--      <p>-->
-  <!--        <?php-->
-  <!--        $serial = $_GET["serial"];-->
-  <!--        $_SESSION['serial'] = $serial;-->
-  <!--        $serialNotes = "SELECT *-->
-  <!--                        FROM equipment-->
-  <!--                        WHERE serial_number = '$serial'";-->
-                          
-  <!--        $serialQuery = mysql_query($serialNotes);-->
-  <!--        while($row = mysql_fetch_array($serialQuery)){-->
-  <!--          echo "<h2>" . $row['notes'] . "</h2>"; -->
-  <!--        }-->
-  <!--        ?>-->
-  <!--      </p>-->
-  <!--    </div>-->
-  <!--    <div class="modal-footer">-->
-  <!--      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--    </div>-->
-  <!--  </br>-->
-  <!--  </form>-->
-  <!--  </div>-->
     <div class="row">
       <div class="col-xs-12">
         <p id="service_error" style=<?php echo isset($_SESSION['service_error']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['service_error']; unset($_SESSION['service_error']); ?></p>
