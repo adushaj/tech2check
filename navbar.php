@@ -22,7 +22,7 @@
         $nav_info = mysql_fetch_array($nav_re);
     ?>
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
+      <li class="dropdown" style="border:none;">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <span class="glyphicon glyphicon-user"></span> 
           <strong><?php echo $nav_info['first_name'] . ' ' . $nav_info['last_name']; ?></strong>
@@ -41,7 +41,7 @@
                   <p class="text-left"><strong><?php echo $nav_info['first_name'] . ' ' . $nav_info['last_name']; ?></strong></p>
                   <p class="text-left small"><?php echo $nav_info['email']; ?></p>
                   <p class="text-left">
-                    <a href="user_account.php" class="btn btn-primary btn-block btn-sm">Update Account</a>
+                    <a href="user_account.php" class="btn btn-primary btn-block btn-sm">Account</a>
                   </p>
                 </div>
               </div>
@@ -87,7 +87,7 @@
         
         <!-- Not for students -->
         <?php if (isset($_SESSION['employee_type'])) { ?>
-          <li><a href="frontdesk_dashboard.php">Front Desk</a></li>
+          <li><a href="front_desk.php">Front Desk</a></li>
           <!--<li><a href="Check_out.php">CHECK OUT</a></li>-->
           <!--<li><a href="Check_in.php">CHECK IN</a></li>-->
         <?php } ?>

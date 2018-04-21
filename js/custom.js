@@ -1,8 +1,4 @@
-/********************************************************
- *
- * Custom Javascript code for Flexor Bootstrap theme
- *
- *******************************************************/
+
 $(document).ready(function() {
   // Bootstrap collapse
   $('[data-toggle="collapse"]').on({
@@ -83,5 +79,5 @@ $(document).ready(function() {
   $(window).stellar({
     responsive: true,
   });
-
+  
 });

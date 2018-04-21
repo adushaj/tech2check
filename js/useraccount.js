@@ -18,3 +18,10 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 } 
+
+function cancelRes(rid) {
+    $('#modal_info').text($('#row_' + rid + ' #make').text() + ' ' + $('#row_' + rid + ' #model').text());
+    $('#btn-cancel').val(rid);
+    
+    $('#modal').modal('show');
+}

@@ -1,7 +1,6 @@
 function lookup(button) {
-    var lname = $('#lname').text();
+    var lname = $('#lname_search').val();
     if (lname == null) {
-        lname = "test";
         return false;
     }
     
@@ -18,7 +17,12 @@ function lookup(button) {
     }
     
     // Add new parameters or update existing ones
-    queryParameters['lname'] = lname;
+    if (button.value != "-1") {
+        queryParameters['lname'] = $('#modal_' + button.value + ' #lname_search').val();
+        queryParameters['q'] = button.value;
+    } else {
+        queryParameters['lname'] = lname;
+    }
     
     // Replace the query portion of the URL.
     // jQuery.param() -> create a serialized representation of an array or

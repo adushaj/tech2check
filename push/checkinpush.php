@@ -1,18 +1,29 @@
 <?php
     include("../connect.php");
     
-    $rental_id = mysql_real_escape_string($_GET['rental_id']);
-    $notes = mysql_real_escape_string($_GET['notes']);
-    $status = mysql_real_escape_string($_GET['status_id']);
+    $rental_id = mysql_real_escape_string($_POST['btn_submit']);
+    $notes = mysql_real_escape_string($_POST['notes']);
+    $status = mysql_real_escape_string($_POST['status_id']);
+
     
+    $sql = "SELECT first_name, last_name FROM employee WHERE username_id = '{$_SESSION['username_id']}'";
+    $re = mysql_query($sql);
+    $arr = mysql_fetch_array($re);
+    $name = $arr['first_name'] . ' ' . $arr['last_name'];
     
+    $getserial = "SELECT serial_number FROM rental_record WHERE rental_id = '$rental_id'";
+    $serialQuery = mysql_query($getserial);
+    $serial = mysql_fetch_array($serialQuery)['serial_number'];
     
-    //Once I get the button to work I would like to add the option 
-    //for employees to enter notes when checking in equipment.
-    //They would also be able to change the status to "needs repair"
-    //at the time of checking in, maybe just a checkbox when confirming
-    //the check in. 
-    
+    if ($notes != '') {
+        $updateEquipment = "UPDATE equipment
+                            SET notes = CONCAT(IFNULL(notes,''), NOW(), ' by ', '$name (checkin)', ': ', '$notes', CHAR(13)),
+                            last_activity_date = NOW(),
+                            username_id = '{$_SESSION['username_id']}'
+                            WHERE serial_number = '$serial'";
+        
+        $updateQuery = mysql_query($updateEquipment);
+    }
     
     $updaterental = "UPDATE rental_record
                     SET date_returned = NOW(),
@@ -37,18 +48,18 @@
         
         if ($Query3) {
             $_SESSION['check_in_success'] = "Equipment checked in!";
-            header("location: ../frontdesk_dashboard.php");
+            header("location: ../Check_in.php");
             exit;
         } 
         else {
             $_SESSION['check_in_error'] = "Error checking in equipment!";
-            header("location: ../frontdesk_dashboard.php");
+            header("location: ../Check_in.php");
             exit;
         }
     }
     else {
         $_SESSION['check_in_error'] = "Error checking in equipment!";
-        header("location: ../frontdesk_dashboard.php");
+        header("location: ../Check_in.php");
         exit;
     }
 ?>

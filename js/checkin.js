@@ -1,4 +1,4 @@
-function checkin(button) {
+function checkin(button, modal) {
     var cont = confirm('Are you sure you want to check in this equipment?');
     if (!cont) {
         return;
@@ -18,8 +18,8 @@ function checkin(button) {
     
     // Add new parameters or update existing ones
     queryParameters['rental_id'] = $(button).val();
-    queryParameters['notes'];
-    queryParameters['status_id'];
+    queryParameters['notes'] = $(modal + ' #status_id:checked').val();
+    queryParameters['status_id'] = $(modal + ' #notes').text();
     
     // Replace the query portion of the URL.
     // jQuery.param() -> create a serialized representation of an array or

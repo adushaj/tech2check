@@ -87,6 +87,7 @@
             $sql_security = "INSERT INTO security_answers VALUES ('$username_id', '$security_question', '$security_answer')";
             mysql_query($sql_security);
             
+            //clear session variables
             unset($_SESSION['reg_username']);
             unset($_SESSION['reg_firstname']);
             unset($_SESSION['reg_middleinitial']);
@@ -98,6 +99,8 @@
             unset($_SESSION['reg_zip']);
             unset($_SESSION['reg_phonenumber']);
             unset($_SESSION['reg_email']);
+            
+            $_SESSION['username_id'] = $username_id;
             
             header("location: ../index.php");
             exit;

@@ -248,7 +248,7 @@
             <small>
                 <strong>DJ Khaled</strong>
                 <br>
-                American record producer, radio personality, DJ, record label executive and author
+                America record producer, radio personality, DJ, record label executive and author
               </small>
           </blockquote>
         </div>

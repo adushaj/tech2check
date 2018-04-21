@@ -65,8 +65,8 @@
       <div class="well">
         <div class="row">
           <div class="col-md-3">
-            <p id="searcherror" style=<?php echo isset($_SESSION['searcherror']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['searcherror']; unset($_SESSION['searcherror']); ?></p>
-            <p id="updatesuccess" style=<?php echo isset($_SESSION['updatesuccess']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['updatesuccess']; unset($_SESSION['updatesuccess']); ?></p>
+            <p id="re_error" style=<?php echo isset($_SESSION['re_error']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['re_error']; unset($_SESSION['re_error']); ?></p>
+            <p id="re_success" style=<?php echo isset($_SESSION['re_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['re_success']; unset($_SESSION['re_success']); ?></p>
             <form name="searchForm" action="push/configure_userpush.php" method="POST" autocomplete="off">
               <div class="form-group" id="rads">
                   <label class="radio-inline" for="radio_both">
@@ -292,7 +292,7 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
+  <!-- Template Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
   <script src="/Project/js/freelancer.min.js"></script>
   <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>

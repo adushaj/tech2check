@@ -62,16 +62,14 @@
             </div>
         </div>
         
-        <p id="searcherror" style=<?php echo isset($_SESSION['searcherror']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['searcherror']; unset($_SESSION['searcherror']); ?></p>
-        <p id="updatesuccess" style=<?php echo isset($_SESSION['updatesuccess']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['updatesuccess']; unset($_SESSION['updatesuccess']); ?></p>
-        
-        <p id="reseterror" style=<?php echo isset($_SESSION['reseterror']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['reseterror']; unset($_SESSION['reseterror']); ?></p>
-        <p id="resetsuccess" style=<?php echo isset($_SESSION['resetsuccess']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['resetsuccess']; unset($_SESSION['resetsuccess']); ?></p>
+        <p id="re_error" style=<?php echo isset($_SESSION['re_error']) ? "\"color:red;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['re_error']; unset($_SESSION['re_error']); ?></p>
+        <p id="re_success" style=<?php echo isset($_SESSION['re_success']) ? "\"color:green;display:block;\"" : "\"display:none;\""; ?>><?php echo $_SESSION['re_success']; unset($_SESSION['re_success']); ?></p>
 
         <ul class="nav nav-pills nav-stacked col-md-3 sticky-top">
             <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true">User Info</a></li>
             <li><a href="#tab2" data-toggle="tab">Password Reset</a></li>
             <li><a href="#tab3" data-toggle="tab">Rental History</a></li>
+            <li><a href="#tab4" data-toggle="tab">Reservations</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade active in" id="tab1">
@@ -172,6 +170,11 @@
                     include("user_history.php");
                   ?>            
             </div>
+            <div class="tab-pane fade" id="tab4">
+                  <?php
+                    include("view_reservations.php");
+                  ?>            
+            </div>
         </div>
     </div>
 
@@ -189,7 +192,7 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
+  <!-- Template Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
   <script src="/Project/js/freelancer.min.js"></script>
   <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>

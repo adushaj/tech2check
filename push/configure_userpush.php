@@ -91,7 +91,7 @@
         
         // Validate email address
         if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['searcherror'] = "Please enter a valid email address!";
+            $_SESSION['re_error'] = "Please enter a valid email address!";
             $_SESSION['search_id'] = $old_username_id;
             $_SESSION['user_search'] = $old_type;
             
@@ -118,9 +118,9 @@
                 WHERE username_id = '$old_username_id'";
                 
             if (!mysql_query($sql)) {
-                $_SESSION['searcherror'] = "Update Failed!";
+                $_SESSION['re_error'] = "Update Failed!";
             } else {
-                $_SESSION['updatesuccess'] = "Update successful!";
+                $_SESSION['re_success'] = "Update successful!";
             }
         } else {
             $sql = "UPDATE student 
@@ -140,9 +140,9 @@
                 WHERE username_id = '$old_username_id'";
                 
             if (!mysql_query($sql)) {
-                $_SESSION['searcherror'] = "Update Failed!";
+                $_SESSION['re_error'] = "Update Failed!";
             } else {
-                $_SESSION['updatesuccess'] = "Update successful!";
+                $_SESSION['re_success'] = "Update successful!";
             }
         }
         
@@ -158,16 +158,16 @@
         if ($employee_id > 0) {
             $add_successful = addEmployee($username_id, $employee_id, $type);
             if ($add_successful !== true) {
-                $_SESSION['searcherror'] = $add_successful;
+                $_SESSION['re_error'] = $add_successful;
             } else {
-                $_SESSION['updatesuccess'] = "Update successful!";
+                $_SESSION['re_success'] = "Update successful!";
             }
         } else {
             $remove_successful = removeEmployee($username_id);
             if ($remove_successful !== true) {
-                $_SESSION['searcherror'] = $remove_successful;
+                $_SESSION['re_error'] = $remove_successful;
             } else {
-                $_SESSION['updatesuccess'] = "Update successful!";
+                $_SESSION['re_success'] = "Update successful!";
             }
         }
         
@@ -186,10 +186,10 @@
             $sql = "DELETE FROM usernames WHERE username_id = '$old_username_id'";
             
             if (mysql_query($sql)) {
-                $_SESSION['updatesuccess'] = "User deleted!";
+                $_SESSION['re_success'] = "User deleted!";
             }
         } else {
-            $_SESSION['searcherror'] = 'User not found!';
+            $_SESSION['re_error'] = 'User not found!';
         }
         
         header("location: ../configure_user.php");
@@ -214,7 +214,7 @@
         
         // Validate email address
         if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['searcherror'] = "Please enter a valid email address!";
+            $_SESSION['re_error'] = "Please enter a valid email address!";
             
             header("location: ../user_account.php");
             exit;
@@ -236,9 +236,9 @@
                 WHERE username_id = '$username_id'";
             
             if (!mysql_query($sql)) {
-                $_SESSION['searcherror'] = "Update Failed!";
+                $_SESSION['re_error'] = "Update Failed!";
             } else {
-                $_SESSION['updatesuccess'] = "Update successful!";
+                $_SESSION['re_success'] = "Update successful!";
             }
         } else {
             $sql = "UPDATE student 
@@ -256,9 +256,9 @@
                 WHERE username_id = '$username_id'";
                 
             if (!mysql_query($sql)) {
-                $_SESSION['searcherror'] = "Update Failed!";
+                $_SESSION['re_error'] = "Update Failed!";
             } else {
-                $_SESSION['updatesuccess'] = "Update successful!";
+                $_SESSION['re_success'] = "Update successful!";
             }
         }
         
@@ -272,7 +272,7 @@
     $username_id = mysql_fetch_array(mysql_query($sql))['username_id'];
     
     if (empty($username_id)) {
-        $_SESSION['searcherror'] = "Please enter a valid username!";
+        $_SESSION['re_error'] = "Please enter a valid username!";
         header("location: ../configure_user.php");
         exit;
     }
@@ -290,7 +290,7 @@
     } elseif (mysql_num_rows($re_student) > 0) {
         $_SESSION['user_search'] = 'student';
     } else {
-        $_SESSION['searcherror'] = "User ID not found!";
+        $_SESSION['re_error'] = "User ID not found!";
         header("location: ../configure_user.php");
         exit;
     }
