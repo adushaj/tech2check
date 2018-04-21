@@ -362,7 +362,7 @@
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label class="hiddenLabel">This is hidden label</label>
-                                                                <button class="btn btn-primary" type="button" onClick="lookup(this)" value="<?= $row['serial_number']; ?>">Search</button>
+                                                                <button class="btn btn-primary" type="button" onClick="lookup(this)" name="btn-search" id="btn-search" value="<?= $row['serial_number']; ?>">Search</button>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -524,7 +524,7 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
+  <!-- Template Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
   <script src="/Project/js/freelancer.min.js"></script>
   <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>

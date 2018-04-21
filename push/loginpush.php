@@ -74,8 +74,18 @@
       $_SESSION['username_id'] = $row['username_id'];
     }
     
+    //sends user back to items details after reserve attempt without being logged in
+    $model_id = $_SESSION['modelS'];
+    if ($_SESSION['sendback'] == 'yes'){
+      header("Location: ../item_details.php?model=$model_id");
+      $_SESSION['sendback'] == 'no';
+      exit;
+    }
     header("location: ../index.php");
     exit;
+      
+    
+    
   }
   
   $_SESSION['logerror'] = "Unknown error";

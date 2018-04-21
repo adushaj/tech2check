@@ -99,7 +99,7 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
+  <!-- Template Specific Custom Javascript File -->
   <script src="js/custom.js"></script>
   <script src="/Project/js/freelancer.min.js"></script>
   <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>

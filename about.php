@@ -12,14 +12,14 @@
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+
   <meta property="og:title" content="">
   <meta property="og:image" content="">
   <meta property="og:url" content="">
   <meta property="og:site_name" content="">
   <meta property="og:description" content="">
 
-  <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="">
   <meta name="twitter:title" content="">
@@ -46,13 +46,12 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/round-about.css" rel="stylesheet">
 </head>
 
 <!-- ======== @Region: body ======== -->
 
 <body class="page-about">
-  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
+
   <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.8">
 
     <?php
@@ -69,7 +68,6 @@
           <div class="page-header">
             <h1>
                 About Us
-                
               </h1>
           </div>
           <div class="block block-border-bottom-grey block-pd-sm">
@@ -78,7 +76,7 @@
               </h3>
             <img src="img/misc/about-us.png" alt="About us" class="img-responsive img-thumbnail pull-right m-l m-b">
             <p></p>
-            <p>Tech2Check is the headquarters for the promotion, instruction and support of technology literacy. From beginners looking to learn the basics to experts seeking to hone their skills, our company's training, education and hands-on learning experiences offers services to meet your ever-increasing technology needs. Would you like to see other services or equipment offered by us? <br> Please contact us. <br><div> <a href="#contact" class="btn btn-more"><i class="fa fa-plus"></i>Contact</a></p></div>
+            <p>Tech2Check is the headquarters for the promotion, instruction and support of technology literacy. From beginners looking to learn the basics to experts seeking to hone their skills, our company's training, education and hands-on learning experiences offers services to meet your ever-increasing technology needs. Would you like to see other services or equipment offered by us? <br> Please contact us. <br><div> <a href="#contact" class="btn btn-more js-scroll-trigger"><i class="fa fa-plus"></i>Contact</a></p></div>
           </div>
           <div class = "block">
             <h3 class = "block-title" id = "team">
@@ -86,7 +84,7 @@
             </h3>
         <div class="row">
         <div class="col-lg-4 col-sm-6 text-center mb-4">
-          <img class="rounded-circle img-fluid d-block mx-auto" src="/Project/img/misc/aleks.png" alt="">
+          <img class="img-circle img-thumbnail" src="/Project/img/misc/aleks2.png" alt="">
           <h3>Aleks Dushaj
           <br>
             <small>Technician</small>
@@ -94,7 +92,7 @@
 
         </div>
         <div class="col-lg-4 col-sm-6 text-center mb-4">
-          <img class="rounded-circle img-fluid d-block mx-auto" src="/Project/img/misc/jeff.jpg" alt="">
+          <img class="img-circle img-thumbnail" src="/Project/img/misc/chris.png" alt="">
           <h3>Chris Depalma
           <br>
             <small>Technician</small>
@@ -102,7 +100,7 @@
 
         </div>
         <div class="col-lg-4 col-sm-6 text-center mb-4">
-          <img class="rounded-circle img-fluid d-block mx-auto" src="/Project/img/misc/nick.png" alt="">
+          <img class="img-circle img-thumbnail" src="/Project/img/misc/nick.png" alt="">
           <h3>Nick Woodle
           <br>
             <small>Technician</small>
@@ -110,7 +108,7 @@
         
         </div>
         <div class="col-lg-4 col-sm-6 text-center mb-4">
-          <img class="rounded-circle img-fluid d-block mx-auto" src="/Project/img/misc/tay.png" alt="">
+          <img class="img-circle img-thumbnail" src="/Project/img/misc/tay.png" alt="">
           <h3>Taylor Winowiecki
           <br>
             <small>Technician</small>
@@ -118,7 +116,7 @@
 
         </div>
         <div class="col-lg-4 col-sm-6 text-center mb-4">
-          <img class="rounded-circle img-fluid d-block mx-auto" src="/Project/img/misc/jeff.jpg" alt="">
+          <img class="img-circle img-thumbnail" src="/Project/img/misc/josh.png" alt="">
           <h3>Josh Salar
           <br>
             <small>Technician</small>
@@ -146,14 +144,26 @@
               </div>
               <div class="col-md-4">
                 <div class="stat">
-                  <span data-counter-up>80,000</span>+
+                  <span data-counter-up>
+                  <?php
+                  $rentalcount = "SELECT rental_id
+                                  FROM rental_record
+                                  WHERE date_returned != '0000-00-00 00:00:00'";
+                  $result = mysql_query($rentalcount);
+                  echo mysql_num_rows($result);
+                  ?>
+                  </span>
                   <small>Devices Loaned</small>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="stat">
-                  <span data-counter-up>214</span>
-                  <small>Bugs Fixed</small>
+                  <span data-counter-up><?php
+                    $employees = "SELECT * FROM employee";
+                    $result = mysql_query($employees);
+                    echo mysql_num_rows($result);
+                  ?></span>
+                  <small>Employees</small>
                 </div>
               </div>
             </div>
@@ -169,41 +179,12 @@
                 </a>
             </li>
             <li>
-              <a href="#team">
+              <a class="js-scroll-trigger" href="#team">
                   The Team
                   <small>Our team of stars</small>
                 </a>
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Call out block -->
-  <div class="block block-bg-primary block-bg-overlay block-bg-overlay-5 text-center" data-block-bg-img="https://picjumbo.imgix.net/HNCK8991.jpg?q=40&amp;w=1650&amp;sharp=30" data-stellar-background-ratio="0.3">
-    <h2 class="m-t-0">
-        <!--Be part of our amazing team!-->
-      </h2>
-    <!--<p class="m-a-0">-->
-    <!--  <a href="#" class="btn btn-more btn-lg i-right">We're Hiring <i class="fa fa-angle-right"></i></a>-->
-    <!--</p>-->
-  </div>
-  <!-- Call out block -->
-  <div class="block block-pd-sm block-bg-primary">
-    <div class="container">
-      <div class="row">
-        <h3 class="col-md-4">
-            Some Of Our Clients
-          </h3>
-        <div class="col-md-8">
-          <div class="row">
-            <!--Client logos should be within a 120px wide by 60px height image canvas-->
-            <div class="col-xs-6 col-md-2">
-              <a href="https://www.oakland.edu/" title="Client 1">
-                  <img src="img/clients/ou.png" alt="Oakland University logo" class="img-responsive">
-                </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -223,9 +204,9 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
   <script src="js/custom.js"></script>
-
+  <script src="/Project/lib/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/Project/js/freelancer.min.js"></script>
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
   <script src="js/color-switcher.js"></script>
 
